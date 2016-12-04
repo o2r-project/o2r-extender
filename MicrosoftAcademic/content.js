@@ -7,12 +7,12 @@ chrome.runtime.onMessage.addListener( /*Listen to JSON response from background.
   function(request, sender, sendResponse) {
     if( request.message === "clicked_browser_action" ) {
     	//Need to insert the evaluation (by checking if a source link is available) here! 
-    if( $('#actions').is(':empty') ) {
+    if( $('.actions').is(':empty') ) {
     // delete div if empty
-    $('#actions').remove();
+    $('.actions').remove();
     }
-        $("#actions").css("border","3px solid red"); /*Useful just to show which DIVS it selects */
-     $("#actions").append("<img id='source' src='source.png'/>");
+        $('.actions').css("border","3px solid red"); /*Useful just to show which DIVS it selects */
+     $(".actions").append("<img id='source' src='source.png'/>");
     }
   }
 );

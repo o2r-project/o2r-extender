@@ -10,7 +10,8 @@
   {
     "matches": [
       "https://academic.microsoft.com/*",
-      "https://academic.microsoft.de/*"
+      "https://academic.microsoft.de/*",
+      "file:///C:/Users/User/Documents/Uni/Master/2.%20Semester/Project%20Badgets/Gitlab/chromeextension/reproducability/MicrosoftAcademic/check.html"
     ],
     "js": ["jquery-3.1.1.min.js","content.js"]
   }
