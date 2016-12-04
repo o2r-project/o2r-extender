@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Microsoft Academic",
+  "version": "0.1", 
+  "web_accessible_resources": ["source.png"], //all images in local directory must be added here to be approved in content.js
+  "background": {
+  "scripts": ["background.js"]
+  },
+  "content_scripts": [
+  {
+    "matches": [
+      "https://academic.microsoft.com/*",
+      "https://academic.microsoft.de/*"
+    ],
+    "js": ["jquery-3.1.1.min.js","content.js"]
+  }
+],
+  "browser_action": {
+    "default_icon": "icon.png"
+  }
+}
