@@ -8,11 +8,12 @@ chrome.runtime.onMessage.addListener( /*Listen to JSON response from background.
     if( request.message === "clicked_browser_action" ) {
     	//Need to insert the evaluation (by checking if a source link is available) here! 
     if( $('.actions').is(':empty') ) {
-    // delete div if empty
-    $('.actions').remove();
+       	$('<img id="source" src='+chrome.extension.getURL("nosource.png")+' />' ).insertAfter( ".actions" );
     }
-        $('.actions').css("border","3px solid red"); /*Useful just to show which DIVS it selects */
-     $(".actions").append("<img id='source' src='source.png'/>");
+    else{
+      	$('<img id="source" src='+chrome.extension.getURL("source.png")+' />' ).insertAfter( ".actions" );
+    }
+
     }
   }
 );
