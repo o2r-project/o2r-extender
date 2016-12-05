@@ -1,5 +1,5 @@
 // content.js
-alert("Welcome to Google Scholar! Press the O2R icon to assess which of these researches are Peer-Reviewed!")
+alert("Welcome to Mendeley! Press the O2R icon to assess which of these researches are Peer-Reviewed!")
 
 chrome.runtime.onMessage.addListener( /*Listen to JSON response from background.js */
   function(request, sender, sendResponse) {
