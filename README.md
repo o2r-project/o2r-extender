@@ -10,11 +10,12 @@ Next, clone our repository:
 
 `git clone https://zivgitlab.uni-muenster.de/geocontainer-badges/reproducability`
 
-Open the Chrome browser > Click the three dots in the top right corner > Settings > Extensions > Load Unpacked Extension... > Select the folder containing the repository.
+Open the Chrome browser > Click the three dots in the top right corner > Settings > Extensions > Load Unpacked Extension... > Select the folder containing each 
+extension in the repository. Note: only one extension can be added at a time.
 
 ### Run in Chrome
-Upon succesful installation, ou'll notice an 'O2R' icon in the top-right corner next to the URL line. Navigate to your chosen website, search for the name of the research
-you are interested in, and click the 'O2R' button to assess the search results.
+Upon succesful installation, ou'll notice the applications' icon in the top-right corner next to the URL line. Navigate to your chosen website, search for the name of the research
+you are interested in, and click the extension icon (top right corner) to assess the search results.
 
 #### The extension in detail
 
