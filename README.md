@@ -20,9 +20,15 @@ you are interested in, and click the extension icon (top right corner) to assess
 #### The extension in detail
 
 [arXiv](https://arxiv.org/):  
+
 [PLOS](https://www.plos.org/search?q=): Adding badge "Executability" to each search result and returning (to console log) the names of articles to be passed to API. 
+
 [ScienceDirect](http://www.sciencedirect.com/):  
+
 [Google Scholar](https://scholar.google.de/): Adding badge "peer review" to each search result and returning (to console log) the names of articles to be passed to API. 
-[MS Academic Search](https://academic.microsoft.com/): Checing external source link  
+
+[MS Academic Search](https://academic.microsoft.com/): Checking external source link  
+
 [OSF](https://osf.io/)  
+
 [Mendeley](https://www.mendeley.com/): Checking readers  
