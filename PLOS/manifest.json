@@ -1,16 +1,15 @@
 {
   "manifest_version": 2,
-  "name": "Google Scholar",
+  "name": "PLOS",
   "version": "0.1", 
-  "web_accessible_resources": ["peer-review.png"], //all images in local directory must be added here to be approved in content.js
+  "web_accessible_resources": ["peer-review.png", "Executability-Yes-brightgreen.png"], //all images in local directory must be added here to be approved in content.js
   "background": {
   "scripts": ["background.js"]
   },
   "content_scripts": [
   {
     "matches": [
-      "https://scholar.google.de/*",
-      "https://scholar.google.com/*"
+      "https://www.plos.org/*"
     ],
     "js": ["jquery-3.1.1.min.js","content.js"]
   }
