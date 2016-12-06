@@ -18,10 +18,10 @@ you are interested in, and click the 'O2R' button to assess the search results.
 
 #### The extension in detail
 
-[arXiv](https://arxiv.org/):
-[PLOS](https://www.plos.org/search?q=):
-[ScienceDirect](http://www.sciencedirect.com/):
-[Google Scholar](https://scholar.google.de/): Checking peer-review
-[MS Academic Search](https://academic.microsoft.com/): Checing external source link
-[OSF](https://osf.io/)
-[Mendeley](https://www.mendeley.com/): Checking readers
+[arXiv](https://arxiv.org/):  
+[PLOS](https://www.plos.org/search?q=): Adding badge "Executability" to each search result and returning (to console log) the names of articles to be passed to API. 
+[ScienceDirect](http://www.sciencedirect.com/):  
+[Google Scholar](https://scholar.google.de/): Adding badge "peer review" to each search result and returning (to console log) the names of articles to be passed to API. 
+[MS Academic Search](https://academic.microsoft.com/): Checing external source link  
+[OSF](https://osf.io/)  
+[Mendeley](https://www.mendeley.com/): Checking readers  
