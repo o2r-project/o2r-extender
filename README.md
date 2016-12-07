@@ -27,6 +27,6 @@ you are interested in, and click the extension icon (top right corner) to assess
 
 [Google Scholar](https://scholar.google.de/): Adding badge "peer review" to each search result and returning (to console log) the names of articles to be passed to API. 
 
-[MS Academic Search](https://academic.microsoft.com/): Adding badge "Source" if an external source link is provided to each search result and returning (to console log) the names of articles to be passed to API. 
+[MS Academic Search](https://academic.microsoft.com/): Adding badge "Source" if an external source link is provided to each search result. 
 
-[Mendeley](https://www.mendeley.com/): Adding badge "Readers" if readers > 0 to each search result and returning (to console log) the names of articles to be passed to API. 
+[Mendeley](https://www.mendeley.com/): Adding badge "Readers" if readers > 0 to each search result.
