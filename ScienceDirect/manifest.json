@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "ScienceDirect PeerReview Check",
+  "version": "0.1", 
+  "web_accessible_resources": ["peer-review.png"], //all images in local directory must be added here to be approved in content.js
+  "background": {
+  "scripts": ["background.js"]
+  },
+  "content_scripts": [
+  {
+    "matches": [
+      "http://www.sciencedirect.com/*",
+      "https://www.sciencedirect.com/*"
+    ],
+    "js": ["jquery-3.1.1.min.js","content.js"]
+  }
+],
+  "browser_action": {
+    "default_icon": "icon.png"
+  }
+}
