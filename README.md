@@ -19,8 +19,6 @@ you are interested in, and click the extension icon (top right corner) to assess
 
 #### The extension in detail
 
-[arXiv](https://arxiv.org/):  TO DO: Jaswal
-
 [PLOS](https://www.plos.org/search?q=): Adding badge "Executability" to each search result and returning (to console log) the names of articles to be passed to API. 
 
 [ScienceDirect](http://www.sciencedirect.com/): Adding badge "peer review" to each search result and returning (to console log) the names of articles to be passed to API.
