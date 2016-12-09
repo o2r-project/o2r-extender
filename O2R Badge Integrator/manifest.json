@@ -2,6 +2,7 @@
   "manifest_version": 2,
   "name": "O2R Badge Integrator",
   "version": "0.1", 
+  "permissions": [ "webNavigation", "*://*/*" ],
   "web_accessible_resources": ["peer-review.png", "executability.png"], //all images in local directory must be added here to be approved in content.js
   "background": {
   "scripts": ["background.js"]
