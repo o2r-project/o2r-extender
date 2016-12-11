@@ -1,16 +1,21 @@
 {
   "manifest_version": 2,
   "name": "O2R Badge Integrator",
+<<<<<<< HEAD
+  "version": "0.1.0", 
+  "web_accessible_resources": ["peer-review.png", "executability.png"], 
+=======
   "version": "0.1", 
   "permissions": [ "webNavigation", "*://*/*" ],
   "web_accessible_resources": ["peer-review.png", "executability.png"], //all images in local directory must be added here to be approved in content.js
+>>>>>>> 81097fa07b81390d67229d5b0a76be6a940923e1
   "background": {
   "scripts": ["background.js"]
   },
   "content_scripts": [
   {
     "matches": ["https://scholar.google.de/*", "https://scholar.google.com/*"],
-    "js": ["jquery-3.1.1.min.js","content.js"]
+    "js": ["jquery-3.1.1.min.js","GScontent.js"]
   },
   {
     "matches": ["https://www.plos.org/*"],
@@ -27,7 +32,7 @@
   {
   	"matches": ["http://www.sciencedirect.com/*"],
   	"js": ["jquery-3.1.1.min.js","SDcontent.js"]
-  } //end
+  } 
 ],
   "browser_action": {
     "default_icon": "icon.png"
