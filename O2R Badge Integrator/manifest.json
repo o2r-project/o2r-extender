@@ -7,7 +7,7 @@
 
   "version": "0.1", 
   "permissions": [ "webNavigation", "*://*/*" ],
-  "web_accessible_resources": ["peer-review.png", "executability.png"], //all images in local directory must be added here to be approved in content.js
+  "web_accessible_resources": ["peer-review.png", "executability.png", "source.png", "readers.png", "nosource.png", "noreaders.png"], //all images in local directory must be added here to be approved in content.js
 
   "background": {
   "scripts": ["background.js"]
