@@ -1,14 +1,14 @@
 {
   "manifest_version": 2,
   "name": "O2R Badge Integrator",
-<<<<<<< HEAD
+
   "version": "0.1.0", 
-  "web_accessible_resources": ["peer-review.png", "executability.png"], 
-=======
+  "web_accessible_resources": ["peer-review.png", "executability.png", "source.png", "readers.png", "nosource.png", "noreaders.png"], 
+
   "version": "0.1", 
   "permissions": [ "webNavigation", "*://*/*" ],
   "web_accessible_resources": ["peer-review.png", "executability.png"], //all images in local directory must be added here to be approved in content.js
->>>>>>> 81097fa07b81390d67229d5b0a76be6a940923e1
+
   "background": {
   "scripts": ["background.js"]
   },
