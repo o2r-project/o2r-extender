@@ -14,6 +14,40 @@ chrome.runtime.onMessage.addListener( /*Listen to JSON response from background.
       	$('<img id="source" src='+chrome.extension.getURL("nosource.png")+' />' ).insertAfter( ".entity-news card" );
     }
 
+    
+    	$('.blue-title').each(function(i, obj) {
+      if (obj.childNodes[0].text != undefined) { // Evaluation 
+   				var title= (obj.childNodes[0].text); //Create title of research to be passsed to CrossRefs API
+          
+   			} else  { 
+   				var title= (obj.childNodes[2].text); //Create title of research to be passsed to CrossRefs API
+   			}
+
+      console.log(title); // Print Research Title
+
+      var json = (function () { //Send research title to get DOI 
+      var json = null;
+      $.ajax({
+        'async': false,
+        'global': false,
+        'url': "https://api.crossref.org/works?query="+title,
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+      });
+      return json;
+      }) (); 
+
+      if (title.toLowerCase()==json.message.items[0].title.toString().toLowerCase()) { 
+          console.log("SUCCESS!: "+title+json.message.items[0].DOI); //title matches EXACTLY
+      }
+      else { 
+          console.log("No exact match");
+      }
+
+    	}); 
+
     }
   }
 );

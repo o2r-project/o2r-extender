@@ -11,18 +11,40 @@ chrome.runtime.onMessage.addListener( /*Listen to JSON response from background.
 				$('<img id="peer-review" src='+chrome.extension.getURL("readers.png")+' />' ).insertAfter( ".publication-details" );
 			}
 			//add badge
-      
-    	$('.gs_rt').each(function(i, obj) {
+
+    		$('#publication-details').each(function(i, obj) {
       if (obj.childNodes[0].text != undefined) { // Evaluation 
-   				console.log(obj.childNodes[0].text); //Title of research to be passed to API to check if peer reviewed/reproducible
+   				var title= (obj.childNodes[0].text); //Create title of research to be passsed to CrossRefs API
+          
    			} else  { 
-   				console.log(obj.childNodes[2].text); //Title of research to be passed to API to check if peer reviewed/reproducible
+   				var title= (obj.childNodes[2].text); //Create title of research to be passsed to CrossRefs API
    			}
 
-    	//console.log(obj);
+      console.log(title); // Print Research Title
+
+      var json = (function () { //Send research title to get DOI 
+      var json = null;
+      $.ajax({
+        'async': false,
+        'global': false,
+        'url': "https://api.crossref.org/works?query="+title,
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+      });
+      return json;
+      }) (); 
+
+      if (title.toLowerCase()==json.message.items[0].title.toString().toLowerCase()) { 
+          console.log("SUCCESS!: "+title+json.message.items[0].DOI); //title matches EXACTLY
+      }
+      else { 
+          console.log("No exact match");
+      }
 
     	}); 
-        //$(".gs_ri").css("border","3px solid red"); /*Useful just to show which DIVS it selects *
+        
     }
   }
 );
