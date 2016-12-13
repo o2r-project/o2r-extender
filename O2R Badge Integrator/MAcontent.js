@@ -16,11 +16,11 @@ chrome.runtime.onMessage.addListener( /*Listen to JSON response from background.
 
     
     	$('.blue-title').each(function(i, obj) {
-      if (obj.childNodes[0].text != undefined) { // Evaluation 
-   				var title= (obj.childNodes[0].text); //Create title of research to be passsed to CrossRefs API
+      if (document.getElementsByClassName("blue-title").title != undefined) { // Evaluation 
+   				var title= (document.getElementsByClassName("blue-title").title); //Create title of research to be passsed to CrossRefs API
           
    			} else  { 
-   				var title= (obj.childNodes[2].text); //Create title of research to be passsed to CrossRefs API
+   				var title= (document.getElementsByClassName("blue-title").title); //Create title of research to be passsed to CrossRefs API
    			}
 
       console.log(title); // Print Research Title
