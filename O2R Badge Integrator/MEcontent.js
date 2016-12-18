@@ -14,10 +14,10 @@ chrome.runtime.onMessage.addListener( /*Listen to JSON response from background.
 
     		$('#publication-details').each(function(i, obj) {
       if (obj.$('#publication-details').closest('a').attr('href').text != undefined) { // Evaluation 
-   				var title= (obj.$('#publication-details').closest('a').attr('href').text); //Create title of research to be passsed to CrossRefs API
+   				var title= (obj.$('#publication-details').closest('a').attr('href').text); //Create title of research to be passed to CrossRefs API
           
    			} else  { 
-   				var title= (obj.$('#publication-details').closest('a').attr('href').text); //Create title of research to be passsed to CrossRefs API
+   				var title= (obj.$('#publication-details').closest('a').attr('href').text); //Create title of research to be passed to CrossRefs API
    			}
 
       console.log(title); // Print Research Title
