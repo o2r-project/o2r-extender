@@ -15,23 +15,23 @@
   "content_scripts": [
   {
     "matches": ["https://scholar.google.de/*", "https://scholar.google.com/*"],
-    "js": ["jquery-3.1.1.min.js","GScontent.js"]
+    "js": ["jquery-3.1.1.min.js","GScontent.js", "popup.js"]
   },
   {
     "matches": ["https://www.plos.org/*"],
-    "js": ["jquery-3.1.1.min.js","PLOScontent.js"]
+    "js": ["jquery-3.1.1.min.js","PLOScontent.js", "popup.js"]
   },
   {
     "matches": ["https://www.mendeley.com/*","https://www.mendeley.de/*"],
-    "js": ["jquery-3.1.1.min.js","MEcontent.js"]
+    "js": ["jquery-3.1.1.min.js","MEcontent.js", "popup.js"]
   },
   {
   	"matches": ["https://academic.microsoft.com/*","https://academic.microsoft.de/*"],
-  	"js": ["jquery-3.1.1.min.js","MAcontent.js"]
+  	"js": ["jquery-3.1.1.min.js","MAcontent.js", "popup.js"]
   },
   {
   	"matches": ["http://www.sciencedirect.com/*"],
-  	"js": ["jquery-3.1.1.min.js","SDcontent.js"]
+  	"js": ["jquery-3.1.1.min.js","SDcontent.js", "popup.js"]
   } 
 ],
   "browser_action": {
