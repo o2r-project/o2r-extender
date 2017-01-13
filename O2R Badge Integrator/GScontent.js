@@ -6,43 +6,41 @@ chrome.runtime.onMessage.addListener( /*Listen to JSON response from background.
   function(request, sender, sendResponse) {
     if( request.message === "clicked_browser_action" ) {
     $( "#gs_qsuggest" ).removeClass( "gs_ri" ); /*To remove badge from 'Suggested Result' div */
-      //$('<img id="peer-review" src='+chrome.extension.getURL("peer-review.png")+' />' ).insertAfter( ".gs_ri" ); //add badges after every result
+      //$('<img id="peer-review" src='+chrome.extension.getURL("peer-review.png")+' />' ).insertAfter( ".gs_ri" ); //add badges after every result  
     $('.gs_rt').each(function(i, obj) {
-    getTitle(obj);
+    getTitle(obj);  
       if (title != "NONE") { //If NOT a citation, but an actual link to research, run the DOI check
-   			if (getDOI(title)!="No Match") { //If research has a doi, add badge
-   				$('<img id="peer-review" src='+chrome.extension.getURL("peer-review.png")+' />' ).insertAfter(obj);
-   				if (checkExe(title)==true) {
-   				$('<img id="peer-review" src='+chrome.extension.getURL("executability.png")+' />' ).insertAfter(obj);
-   				}
-   			} else { //If research doesn't match a doi, print to console name of research
-   				console.log("No result found for "+title); //No valid title found, input NONE string
-   			}
-   		} else {
-   			console.log (" Found citation, not a research link");
-   		}         
-    	}); 
+        if (getDOI(title)!="No Match") { //If research has a doi, add badge
+            console.log(getDOI(title));
+            var doi = getDOI(title);
+          $('<a href = "https://www.google.com"> <img id="peer-review" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/peerreview/doaj/doi:'+doi+' /> </a>' ).insertAfter(obj);
+          $('<a href = "https://www.google.com"> <img id="license" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/licence/o2r/doi:'+processDOI(doi)+' /> </a>' ).insertAfter(obj);
+          $('<a href = "https://www.google.com"> <img id="executability" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/executable/o2r/1'+' /> </a>' ).insertAfter(obj);
+          } else { //If research doesn't match a doi, print to console name of research
+            console.log("No result found for "+title); //No valid title found, input NONE string
+          }
+      } else {
+        console.log (" Found citation, not a research link");
+      }         
+      }); 
     }
-//check
-/*
-* Future APIs will go here (Executability, Reproducibility). Peer Review can be integrated in getDOI function
-*/ 
 
-function checkExe(title) {
-	return true;
+function processDOI (doi) {
+  var doiFormatted=doi.replace("/","%2F");
+  return doiFormatted;
 }
 
 /*
 * Extract research title from each search result
 */
 function getTitle (obj) {
-	if (obj.childNodes[0].text != undefined)  {
-		title= (obj.childNodes[0].text); // Take 1st argument in title (In case it's e.g. Environmental quality...)
-	} else if (obj.childNodes[2].text!=undefined) {
-		title= (obj.childNodes[2].text);  //Take 3rd argument (In case it's e.g. [CITATION] Air Quality...)
-	} else {
-		title= "NONE"; //It's a citation, not a link to a research
-	} return title;
+  if (obj.childNodes[0].text != undefined)  {
+    title= (obj.childNodes[0].text); // Take 1st argument in title (In case it's e.g. Environmental quality...)
+  } else if (obj.childNodes[2].text!=undefined) {
+    title= (obj.childNodes[2].text);  //Take 3rd argument (In case it's e.g. [CITATION] Air Quality...)
+  } else {
+    title= "NONE"; //It's a citation, not a link to a research
+  } return title;
 }
 
 /*
