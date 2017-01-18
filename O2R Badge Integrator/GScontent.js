@@ -55,9 +55,9 @@ chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.j
 						if (title.toLowerCase() == data.message.items[0].title.toString().toLowerCase()) {  //title matches EXACTLY to Crossrefs first search result
 							doi = data.message.items[0].DOI;
 							console.log(doi);
-							$('<a href = "' + infoURL + '"><img id="peer-review" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/peerreview/doaj/doi:' + doi + ' /> </a>').insertAfter(obj);
-							$('<a href = "' + infoURL + '"><img id="license" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/licence/o2r/doi:' + processDOI(doi) + ' /> </a>').insertAfter(obj);
-							$('<a href = "' + infoURL + '"><img id="executability" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/executable/o2r/1' + ' /> </a>').insertAfter(obj);
+							$('<a href = "' + infoURL + '" target="_blank"><img id="peer-review" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/peerreview/doaj/doi:' + doi + ' /> </a>').insertAfter(obj);
+							$('<a href = "' + infoURL + '" target="_blank"><img id="license" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/licence/o2r/doi:' + processDOI(doi) + ' /> </a>').insertAfter(obj);
+							$('<a href = "' + infoURL + '" target="_blank"><img id="executability" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/executable/o2r/1' + ' /> </a>').insertAfter(obj);
 							
 						} else { //title doesn't match EXACTLY, rejected 
 							markUninteresting(obj);
