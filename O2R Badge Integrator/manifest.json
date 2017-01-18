@@ -4,7 +4,7 @@
   "version": "0.2.0", 
 
   "web_accessible_resources": ["peer-review.png", "executability.png", "source.png", "readers.png", "nosource.png", "noreaders.png"], 
-  "permissions": [ "webNavigation", "*://*/*" ],
+  "permissions": [ "webNavigation", "*://*/*", "storage" ],
 
   "options_page":"options.html",
 
