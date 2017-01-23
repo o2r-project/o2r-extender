@@ -1,11 +1,16 @@
 // content.js
 var title = "";
+var options;
 var infoURL = "http://giv-project6.uni-muenster.de";
-alert("Welcome to Google Scholar! Please wait while these search results are being assessed for peer-review & executability...")
+//alert("Welcome to Google Scholar! Please wait while these search results are being assessed for peer-review & executability...")
 
 chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.js */
 	function (request, sender, sendResponse) {
 		if (request.message === "clicked_browser_action") {
+			chrome.storage.sync.get(null, function (obj) {
+				options = obj;
+				console.log("getOptions: " + options);
+			});
 			$("#gs_qsuggest").removeClass("gs_ri"); /*To remove badge from 'Suggested Result' div */
 			$('.gs_rt').each(function (i, obj) {
 				title = getTitle(obj);
@@ -63,8 +68,8 @@ chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.j
 					//TODO: find better and unique attribute to compare instead of title
 					sameTitle = false;
 					x = null;
-					for (i in data.message.items){
-						if (title.toLowerCase() == data.message.items[i].title.toString().toLowerCase()){
+					for (i in data.message.items) {
+						if (title.toLowerCase() == data.message.items[i].title.toString().toLowerCase()) {
 							sameTitle = true;
 							x = i;
 						}
@@ -73,9 +78,17 @@ chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.j
 					if (sameTitle) {  //title matches EXACTLY to Crossrefs first search result
 						doi = data.message.items[x].DOI;
 						console.log(doi);
-						$('<a href = "' + infoURL + '" target="_blank"><img id="peer-review" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/peerreview/doaj/doi:' + doi + ' /> </a>').insertAfter(obj);
-						$('<a href = "' + infoURL + '" target="_blank"><img id="license" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/licence/o2r/doi:' + processDOI(doi) + ' /> </a>').insertAfter(obj);
-						$('<a href = "' + infoURL + '" target="_blank"><img id="executability" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/executable/o2r/1' + ' /> </a>').insertAfter(obj);
+						if (options.peerreviewBadge) {
+							$('<a href = "' + infoURL + '" target="_blank"><img id="peer-review" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/peerreview/doaj/doi:' + doi + ' /> </a>').insertAfter(obj);
+
+						}
+						if (options.licenceBadge) {
+							$('<a href = "' + infoURL + '" target="_blank"><img id="license" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/licence/o2r/doi:' + processDOI(doi) + ' /> </a>').insertAfter(obj);
+
+						}
+						if (options.executableBadge) {
+							$('<a href = "' + infoURL + '" target="_blank"><img id="executability" src=http://giv-project6.uni-muenster.de:3000/api/1.0/badge/executable/o2r/1' + ' /> </a>').insertAfter(obj);
+						}
 
 					} else { //title doesn't match EXACTLY, rejected 
 						markUninteresting(obj);
