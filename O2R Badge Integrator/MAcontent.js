@@ -4,7 +4,7 @@ alert("Welcome to Micrsoft Academic Search! Please wait while these search resul
 
 chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.js */
 		function (request, sender, sendResponse) {
-			if (request.message === "clicked_browser_action") {
+			if (request.message === "everything_ready") {
 
 				$('.story-title').each(function (i, obj) {
 					var title = document.getElementsByClassName('story-title').getElementsByTagName('a')[0].innerHTML;

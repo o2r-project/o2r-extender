@@ -3,7 +3,7 @@ alert("Welcome to Mendeley! Press the O2R icon to assess which of these research
 
 chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.js */
 		function (request, sender, sendResponse) {
-			if (request.message === "clicked_browser_action") {
+			if (request.message === "everything_ready") {
 				if ($(".number").value == 0) {
 					$('<img id="peer-review" src=' + chrome.extension.getURL("noreaders.png") + ' />').insertAfter(".publication-details");
 				} else {

@@ -1,10 +1,7 @@
-// background.js
+chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
+	chrome.tabs.sendMessage(tab.tabId, {"message": "dom_ready"});
+});
 
-// Called when the user clicks on the browser action.
 chrome.webNavigation.onCompleted.addListener(function (tab) {
-	// Send a message to the active tab
-	chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-		var activeTab = tabs[0];
-		chrome.tabs.sendMessage(activeTab.id, {"message": "clicked_browser_action"});
-	});
+	chrome.tabs.sendMessage(tab.tabId, {"message": "everything_ready"});
 });

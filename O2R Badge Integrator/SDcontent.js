@@ -3,7 +3,7 @@ alert("Welcome to ScienceDirect! Press the green icon to assess which of these r
 
 chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.js */
 		function (request, sender, sendResponse) {
-			if (request.message === "clicked_browser_action") {
+			if (request.message === "everything_ready") {
 				//$( "#gs_qsuggest" ).removeClass( "gs_ri" ); /*To remove badge from suggested result div */
 				$('<img id="peer-review" src=' + chrome.extension.getURL("peer-review.png") + ' />').insertAfter(".article"); //add badge
 				$('<img id="peer-review" src=' + chrome.extension.getURL("peer-review.png") + ' />').insertAfter(".publicationHead"); //add badge
