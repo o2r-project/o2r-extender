@@ -3,19 +3,21 @@ function save_options() {
 	var peerreview = document.getElementById('peerreview').checked;
 	var licence = document.getElementById('licence').checked;
 	var transparent = document.getElementById('transparent').checked;
+	var hideNotAvailable = document.getElementById('hideNotAvailable').checked;
 
 	chrome.storage.sync.set({
 		executableBadge: executable,
 		peerreviewBadge: peerreview,
 		licenceBadge: licence,
-        transparentArticles: transparent
+        transparentArticles: transparent,
+        hideNotAvailable: hideNotAvailable
 	}, function () {
 		// Update status to let user know options were saved.
 		var status = document.getElementById('status');
 		status.textContent = 'Options saved.';
 		setTimeout(function () {
 			status.textContent = '';
-		}, 750);
+		}, 1000);
 	});
 }
 
@@ -27,14 +29,15 @@ function restore_options() {
 		executableBadge: true,
 		peerreviewBadge: true,
 		licenceBadge: true,
-        transparentArticles: true
+        transparentArticles: true,
+        hideNotAvailable: false
 	}, function (items) {
 		document.getElementById('executable').checked = items.executableBadge;
 		document.getElementById('peerreview').checked = items.peerreviewBadge;
 		document.getElementById('licence').checked = items.licenceBadge;
 		document.getElementById('transparent').checked = items.transparentArticles;
+		document.getElementById('hideNotAvailable').checked = items.hideNotAvailable;
 	});
 }
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-		save_options);
+document.getElementById('save').addEventListener('click', save_options);

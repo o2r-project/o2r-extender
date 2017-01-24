@@ -4,7 +4,7 @@ alert("Welcome to PLOS! Please wait while these search results are being assesse
 
 chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.js */
 		function (request, sender, sendResponse) {
-			if (request.message === "clicked_browser_action") {
+			if (request.message === "everything_ready") {
 				//$('<img id="Executability Status" src='+chrome.extension.getURL("Executability-Yes-brightgreen.png")+' />').css('display', 'inline-block').insertAfter( ".gs-title>a" ); // add badge after each result with styling
 				//$('<img id="Executability Status" src='+chrome.extension.getURL("executability.png")+' />').css('margin-left', '20px').insertAfter( ".gs-title>a" ); // add badge after each result with styling
 				$('.gs-title>a').each(function (i, obj) {

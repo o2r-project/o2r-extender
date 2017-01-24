@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "O2R Badge Integrator",
-	"version": "0.2.0", 
+	"version": "0.3.0", 
 	"web_accessible_resources": ["peer-review.png", "executability.png", "source.png", "readers.png", "nosource.png", "noreaders.png"],
 	"permissions": ["webNavigation", "*://*/*", "storage"],
 	"options_page": "options.html",
