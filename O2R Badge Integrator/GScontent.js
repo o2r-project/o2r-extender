@@ -65,8 +65,9 @@ function Badge(type, article) {
 		this.article.getBadgeContainer().append(this.element);
 
 		var that = this;
-		chrome.storage.sync.get(this.type + "Badge", function (setting) {
-			if (!setting) {
+		var settingName = this.type + "Badge";
+		chrome.storage.sync.get(settingName, function (setting) {
+			if (typeof setting[settingName] !== undefined && setting[settingName] === false) {
 				that.element.hide();
 			}
 			else {
@@ -91,14 +92,14 @@ function Badge(type, article) {
 	function filterBadges(title, text) {
 		// TODO: Filter criteria
 		
-		var that = this;
-		chrome.storage.sync.get({
-			hideNotAvailable: false
-		}, function (items) {
-			if (text == 'n/a' && items.hideNotAvailable) {
-				that.getImageElement().hide();
-			}
-		});
+		if (text == 'n/a') {
+			var that = this;
+			chrome.storage.sync.get("hideNotAvailable", function (items) {
+				if (typeof items.hideNotAvailable !== undefined && items.hideNotAvailable === true) {
+					that.getImageElement().hide();
+				}
+			});
+		}
 	}
 
 
@@ -146,9 +147,7 @@ function Article(container) {
 			// Citation
 			return null;
 		}
-		var title = titleElement.text().replace(/\[[^\]]+\]/g, "").trim();
-		console.log("Title: " + title);
-		return title;
+		return titleElement.text().replace(/\[[^\]]+\]/g, "").trim();
 	};
 	
 
