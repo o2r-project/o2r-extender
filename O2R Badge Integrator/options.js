@@ -9,6 +9,8 @@ function save_options() {
 		executableBadge: executable,
 		peerreviewBadge: peerreview,
 		licenceBadge: licence,
+		spatialBadge: spatial,
+		releasetimeBadge: releasetime,
         transparentArticles: transparent,
         hideNotAvailable: hideNotAvailable
 	}, function () {
@@ -28,12 +30,16 @@ function restore_options() {
 		executableBadge: true,
 		peerreviewBadge: true,
 		licenceBadge: true,
+		spatialBadge: true,
+		releasetimeBadge: true,
         transparentArticles: true,
         hideNotAvailable: false
 	}, function (items) {
 		document.getElementById('executable').checked = items.executableBadge;
 		document.getElementById('peerreview').checked = items.peerreviewBadge;
 		document.getElementById('licence').checked = items.licenceBadge;
+		document.getElementById('spatial').checked = items.spatialBadge;
+		document.getElementById('release').checked = items.releasetimeBadge;		
 		document.getElementById('transparent').checked = items.transparentArticles;
 		document.getElementById('hideNotAvailable').checked = items.hideNotAvailable;
 	});
