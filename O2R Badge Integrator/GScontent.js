@@ -37,7 +37,7 @@ function Page(settings) {
 		{key: 'executable', value: 'Executable'}
 		,{key: 'licence', value: 'Licence'}
 		,{key: 'peerreview', value: 'Peer review'}
-		,{key: 'spatial', value: 'Spatial'}
+		,{key: 'spatial', value: 'Research location'}
 //		,{key: 'releasetime', value: 'Release time'}
 	];
 		
@@ -84,7 +84,13 @@ function Page(settings) {
 	};
 	
 	this.hasFilterSet = function() {
-		return this.getFilterValueFromPage('licence') || this.getFilterValueFromPage('peerreview') || this.getFilterValueFromPage('executable');
+		var hasFilter = false;
+		for(var i = 0; i < this.types.length; i++) {
+			if (this.getFilterValueFromPage(this.types[i].key)) {
+				hasFilter = true;
+			}
+		}
+		return hasFilter;
 	};
 	
 	this.getFilterValueFromPage = function(type) {
@@ -106,9 +112,9 @@ function Page(settings) {
 		html += '</ul>';
 		html += '<div class="gs_pad"><div class="gs_hr"></div></div>';
 		html += '<ul id="gs_lnv_bad" class="gs_pad">';
-		html += '<li class="gs_sel"><a href="#">Badge Filter</a></li>\n';
+		html += '<li class="gs_sel"><a href="#">Badge Value Filter</a></li>\n';
 		for(var i = 0; i < this.types.length; i++) {
-			html += '<li class="gs_ind"><label for="filter_' + this.types[i].key + '">' + this.types[i].value + ' value:</label></li>';
+			html += '<li class="gs_ind"><label for="filter_' + this.types[i].key + '">' + this.types[i].value + ':</label></li>';
 			html += '<li class="gs_ind"><input type="text" id="filter_' + this.types[i].key + '" class="updateOnBlur" style="width: 100%;" /></li>';
 		}
 		html += '</ul>';
@@ -134,14 +140,19 @@ function Badge(type, article) {
 	
 	this.getApiUrl = function() {
 		var doi = this.article.getDoi();
+		var urlEncodedDoi = doi.replace("/", "%2F");
 		// TODO: Move to Page.types
 		switch(type) {
 			case 'peerreview':
 				return apiURL + 'peerreview/doaj/doi:' + doi;
 			case 'licence':
-				return apiURL + 'licence/o2r/doi:' + doi.replace("/", "%2F");
+				return apiURL + 'licence/o2r/doi:' + urlEncodedDoi;
 			case 'executable':
-				return apiURL + 'executable/o2r/doi:' + doi.replace("/", "%2F");
+				return apiURL + 'executable/o2r/doi:' + urlEncodedDoi;
+			case 'spatial':
+				return apiURL + 'spatial/o2r/doi:' + urlEncodedDoi;
+			case 'releasetime':
+				return apiURL + 'releasetime/o2r/doi:' + urlEncodedDoi;
 			default: 
 				return null;
 		}
