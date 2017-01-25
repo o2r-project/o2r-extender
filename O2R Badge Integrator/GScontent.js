@@ -34,9 +34,11 @@ function Page(settings) {
 	this.articles = new Array();
 	this.settings = settings;
 	this.types = [
-		{key: 'executable', value: 'Executable'},
-		{key: 'licence', value: 'Licence'},
-		{key: 'peerreview', value: 'Peer review'}
+		{key: 'executable', value: 'Executable'}
+		,{key: 'licence', value: 'Licence'}
+		,{key: 'peerreview', value: 'Peer review'}
+		,{key: 'spatial', value: 'Spatial'}
+//		,{key: 'releasetime', value: 'Release time'}
 	];
 		
 	
