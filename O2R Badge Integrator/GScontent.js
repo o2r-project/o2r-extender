@@ -253,7 +253,7 @@ function Badge(type, article) {
 		}
 		
 		var filter = page.getFilterValueFromPage(this.type);
-		if (filter && this.value.indexOf(filter.toLowerCase()) !== -1) {
+		if (filter && this.value.toLowerCase().indexOf(filter.toLowerCase()) !== -1) {
 			this.article.markInteresting();
 		}
 	};
