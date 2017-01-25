@@ -3,6 +3,8 @@ function save_options() {
 	var peerreview = document.getElementById('peerreview').checked;
 	var licence = document.getElementById('licence').checked;
 	var transparent = document.getElementById('transparent').checked;
+	var spatial = document.getElementById('spatial').checked;
+	var releasetime = document.getElementById('releasetime').checked;
 	var hideNotAvailable = document.getElementById('hideNotAvailable').checked;
 
 	chrome.storage.sync.set({
@@ -39,7 +41,7 @@ function restore_options() {
 		document.getElementById('peerreview').checked = items.peerreviewBadge;
 		document.getElementById('licence').checked = items.licenceBadge;
 		document.getElementById('spatial').checked = items.spatialBadge;
-		document.getElementById('release').checked = items.releasetimeBadge;		
+		document.getElementById('releasetime').checked = items.releasetimeBadge;		
 		document.getElementById('transparent').checked = items.transparentArticles;
 		document.getElementById('hideNotAvailable').checked = items.hideNotAvailable;
 	});
