@@ -41,8 +41,8 @@ function Page(settings) {
 		
 	
 	this.addArticleByElement = function(obj) {
-		this.articles.push(new Article(obj, this));
-	}
+		this.articles.push(new Article(obj, this, this.articles.length));
+	};
 
 	this.update = function() {
 		for(var i = 0; i < this.articles.length; i++) {
@@ -170,7 +170,7 @@ function Badge(type, article) {
 			url:  this.getApiUrl(),
 			dataType: "image/svg+xml"
 		}).always(function(data) {
-			if (typeof data.responseText == undefined || data.responseText.substr(0, 4) != "<svg") {
+			if (typeof data.responseText === 'undefined' || data.responseText.substr(0, 4) !== "<svg") {
 				return;
 			}
 
@@ -222,7 +222,7 @@ function Badge(type, article) {
 		var page = this.getPage();
 
 		var showImage = page.getTypeVisibilityFromPage(this.type);
-		if (showImage && page.getSetting('hideNotAvailable') && this.value == 'n/a') {
+		if (showImage && page.getSetting('hideNotAvailable') && this.value === 'n/a') {
 			showImage = false;
 		}
 		
@@ -247,10 +247,11 @@ function Badge(type, article) {
 	
 }
 
-function Article(container, page) {
+function Article(container, page, id) {
 
 	// Properties
 
+	this.id = id;
 	this.page = page;
 	this.containerElement = $(container);
 	this.doi = null;
@@ -368,7 +369,7 @@ function Article(container, page) {
 	};
 	
 	this.getBadgesContainerName =  function() {
-		return "badges-" + this.doi.replace(/[^\w\d]/g, '');
+		return "badges-" + this.id;
 	};
 	
 	this.getBadgeContainer =  function() {
