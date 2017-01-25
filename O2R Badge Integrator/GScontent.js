@@ -5,10 +5,13 @@ var page = null;
 chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.js */
 	function (request, sender, sendResponse) {
 		if (request.message === "everything_ready") {
+			// TODO: When adding a new badge, applz this here
 			chrome.storage.sync.get({
 				executableBadge: true,
 				peerreviewBadge: true,
 				licenceBadge: true,
+				spatialBadge: true,
+				releasetimeBadge: true,
 				transparentArticles: true,
 				hideNotAvailable: false
 			}, function (items) {
@@ -34,6 +37,7 @@ function Page(settings) {
 	this.articles = new Array();
 	this.settings = settings;
 	this.types = [
+		// TODO: When adding a new badge, applz this here
 		{key: 'executable', value: 'Executable'}
 		,{key: 'licence', value: 'Licence'}
 		,{key: 'peerreview', value: 'Peer review'}
@@ -143,6 +147,7 @@ function Badge(type, article) {
 		var urlEncodedDoi = doi.replace("/", "%2F");
 		// TODO: Move to Page.types
 		switch(type) {
+			// TODO: When adding a new badge, applz this here
 			case 'peerreview':
 				return apiURL + 'peerreview/doaj/doi:' + doi;
 			case 'licence':
