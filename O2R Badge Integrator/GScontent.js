@@ -139,7 +139,7 @@ function Badge(type, article) {
 			case 'licence':
 				return apiURL + 'licence/o2r/doi:' + doi.replace("/", "%2F");
 			case 'executable':
-				return apiURL + 'executable/o2r/0';
+				return apiURL + 'executable/o2r/doi:' + doi.replace("/", "%2F");
 			default: 
 				return null;
 		}
