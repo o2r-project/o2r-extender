@@ -1,4 +1,5 @@
 function save_options() {
+	// TODO: When adding a new badge, applz this here
 	var executable = document.getElementById('executable').checked;
 	var peerreview = document.getElementById('peerreview').checked;
 	var licence = document.getElementById('licence').checked;
@@ -8,6 +9,7 @@ function save_options() {
 	var hideNotAvailable = document.getElementById('hideNotAvailable').checked;
 
 	chrome.storage.sync.set({
+		// TODO: When adding a new badge, applz this here
 		executableBadge: executable,
 		peerreviewBadge: peerreview,
 		licenceBadge: licence,
@@ -29,6 +31,7 @@ function save_options() {
 // stored in chrome.storage.
 function restore_options() {
 	chrome.storage.sync.get({
+		// TODO: When adding a new badge, applz this here
 		executableBadge: true,
 		peerreviewBadge: true,
 		licenceBadge: true,
@@ -37,6 +40,7 @@ function restore_options() {
         transparentArticles: true,
         hideNotAvailable: false
 	}, function (items) {
+		// TODO: When adding a new badge, applz this here
 		document.getElementById('executable').checked = items.executableBadge;
 		document.getElementById('peerreview').checked = items.peerreviewBadge;
 		document.getElementById('licence').checked = items.licenceBadge;
