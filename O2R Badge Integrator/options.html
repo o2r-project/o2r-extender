@@ -1,52 +1,44 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<title>O2R Badge Integrator - Options</title>
-	<style type="text/css">
+	<head>
+		<title>O2R Badge Integrator - Options</title>
+		<style type="text/css">
 			body {
 				font-family: sans-serif;
 			}
 		</style>
-</head>
+	</head>
 
-<body>
-	<h1>Options:</h1>
+	<body>
+		<h1>Options:</h1>
 
-	<p style="font-family: sans-serif;">Select the type of badges which shall be shown:</p>
-<label>
-			<input type="checkbox" id="executable" name="executable" />Executable Badge
-			<br>
-			<input type="checkbox" id="peerreview" name="peerreview" />Peer review Badge
-			<br>
-			<input type="checkbox" id="licence" name="licence" />Licence Badge
-			<br>
-			<input type="checkbox" id="licence" name="spatial" />Spatial information Badge
-			<br>
-			<input type="checkbox" id="licence" name="release" />Release time Badge
+		<p>Select the type of badges which shall be shown:</p>
+		<input type="checkbox" id="executable" name="executable" /> <label for="executable">Executable Badge</label>
+		<br>
+		<input type="checkbox" id="peerreview" name="peerreview" /> <label for="peerreview">Peer review Badge</label>
+		<br>
+		<input type="checkbox" id="licence" name="licence" /> <label for="licence">Licence Badge</label>
+		<br>
+		<input type="checkbox" id="spatial" name="spatial" /> <label for="spatial">Spatial information Badge</label>
+		<br>
+		<input type="checkbox" id="release" name="release" /> <label for="transparent">Release time Badge</label>
+		<br><br>
 
-		</label>
-<br><br>
+		<p>Select whether articles without badges should be half-transparent:</p>
+		<input type="checkbox" id="transparent" name="transparent" /> <label for="transparent">Transparent</label>
+		<br><br>
 
-<p style="font-family: sans-serif;">Select whether articles without badges should be half-transparent:</p>
-<label>
-			<input type="checkbox" id="transparent" name="transparent" />Transparent
-		</label>
-<br><br>
-
-<p style="font-family: sans-serif;">Select whether badges with value "n/a" should be removed</p>
-<label>
-			<input type="checkbox" id="hideNotAvailable" name="hideNotAvailable" /> Hide badges with value "n/a"
-		</label>
-
-<br>
-<br>
-<button id="save">Save</button>
-<br>
-<div id="status"></div>
+		<p>Select whether badges with value "n/a" should be removed</p>
+		<input type="checkbox" id="hideNotAvailable" name="hideNotAvailable" /> <label for="hideNotAvailable">Hide badges with value "n/a"</label>
+		<br>
+		<br>
+		<button id="save">Save</button>
+		<br>
+		<div id="status"></div>
 
 
-<script src="options.js"></script>
-</body>
+		<script src="options.js"></script>
+	</body>
 
 </html>
