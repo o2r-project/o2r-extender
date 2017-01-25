@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>O2R Badge Integrator - Options</title>
-		<style type="text/css">
+
+<head>
+	<title>O2R Badge Integrator - Options</title>
+	<style type="text/css">
 			body {
 				font-family: sans-serif;
 			}
 		</style>
-	</head>
-	<body>
-		<h1>Options:</h1>
+</head>
 
-		<p style = "font-family: sans-serif;">Select the type of badges which shall be shown:</p>
-		<label>
+<body>
+	<h1>Options:</h1>
+
+	<p style="font-family: sans-serif;">Select the type of badges which shall be shown:</p>
+<label>
 			<input type="checkbox" id="executable" name="executable" />Executable Badge
 			<br>
 			<input type="checkbox" id="peerreview" name="peerreview" />Peer review Badge
 			<br>
 			<input type="checkbox" id="licence" name="licence" />Licence Badge
+			<br>
+			<input type="checkbox" id="licence" name="spatial" />Spatial information Badge
+			<br>
+			<input type="checkbox" id="licence" name="release" />Release time Badge
+
 		</label>
-		<br><br>
-		
-		<p style = "font-family: sans-serif;">Select whether articles without badges should be half-transparent:</p>
-		<label>
+<br><br>
+
+<p style="font-family: sans-serif;">Select whether articles without badges should be half-transparent:</p>
+<label>
 			<input type="checkbox" id="transparent" name="transparent" />Transparent
 		</label>
-		<br><br>
-		
-		<p style = "font-family: sans-serif;">Select whether badges with value "n/a" should be removed</p>
-		<label>
+<br><br>
+
+<p style="font-family: sans-serif;">Select whether badges with value "n/a" should be removed</p>
+<label>
 			<input type="checkbox" id="hideNotAvailable" name="hideNotAvailable" /> Hide badges with value "n/a"
 		</label>
 
-		<br>
-		<br>
-		<button id="save">Save</button>
-		<br>
-		<div id="status"></div>
+<br>
+<br>
+<button id="save">Save</button>
+<br>
+<div id="status"></div>
 
 
-		<script src="options.js"></script>
-	</body>
+<script src="options.js"></script>
+</body>
+
 </html>
