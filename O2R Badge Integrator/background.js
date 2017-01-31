@@ -1,9 +1,13 @@
 chrome.webNavigation.onDOMContentLoaded.addListener(function (tab) {
-	chrome.tabs.sendMessage(tab.tabId, {"message": "dom_ready"});
+	if (tab.frameId === 0) { // FrameId == 0 means only the main page, not iframes or similar.
+		chrome.tabs.sendMessage(tab.tabId, {"message": "dom_ready"});
+	}
 });
 
 chrome.webNavigation.onCompleted.addListener(function (tab) {
-	chrome.tabs.sendMessage(tab.tabId, {"message": "everything_ready"});
+	if (tab.frameId === 0) { // FrameId == 0 means only the main page, not iframes or similar.
+		chrome.tabs.sendMessage(tab.tabId, {"message": "everything_ready"});
+	}
 });
 
 chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
