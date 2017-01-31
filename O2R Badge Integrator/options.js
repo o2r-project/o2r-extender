@@ -1,23 +1,16 @@
 function save_options() {
-	// TODO: When adding a new badge, applz this here
-	var executable = document.getElementById('executable').checked;
-	var peerreview = document.getElementById('peerreview').checked;
-	var licence = document.getElementById('licence').checked;
-	var transparent = document.getElementById('transparent').checked;
-	var spatial = document.getElementById('spatial').checked;
-	var releasetime = document.getElementById('releasetime').checked;
+	var transparentArticles = document.getElementById('transparentArticles').checked;
 	var hideNotAvailable = document.getElementById('hideNotAvailable').checked;
-
-	chrome.storage.sync.set({
-		// TODO: When adding a new badge, applz this here
-		executableBadge: executable,
-		peerreviewBadge: peerreview,
-		licenceBadge: licence,
-		spatialBadge: spatial,
-		releasetimeBadge: releasetime,
-        transparentArticles: transparent,
+	var opts = {
+        transparentArticles: transparentArticles,
         hideNotAvailable: hideNotAvailable
-	}, function () {
+	};
+	for(var i = 0; i < BadgeTypes.length; i++) {
+		var key = BadgeTypes[i].key;
+		opts[key + 'Badge'] = document.getElementById(key).checked;
+	}
+
+	chrome.storage.sync.set(opts, function () {
 		// Update status to let user know options were saved.
 		var status = document.getElementById('status');
 		status.textContent = 'Options saved.';
@@ -30,23 +23,24 @@ function save_options() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
-	chrome.storage.sync.get({
-		// TODO: When adding a new badge, applz this here
-		executableBadge: true,
-		peerreviewBadge: true,
-		licenceBadge: true,
-		spatialBadge: true,
-		releasetimeBadge: true,
+	var opts = {
         transparentArticles: true,
         hideNotAvailable: false
-	}, function (items) {
-		// TODO: When adding a new badge, applz this here
-		document.getElementById('executable').checked = items.executableBadge;
-		document.getElementById('peerreview').checked = items.peerreviewBadge;
-		document.getElementById('licence').checked = items.licenceBadge;
-		document.getElementById('spatial').checked = items.spatialBadge;
-		document.getElementById('releasetime').checked = items.releasetimeBadge;		
-		document.getElementById('transparent').checked = items.transparentArticles;
+	};
+	for(var i = 0; i < BadgeTypes.length; i++) {
+		var key = BadgeTypes[i].key;
+		
+		opts[key + 'Badge'] = true;
+		
+		var checkboxes = document.getElementById('checkboxes');
+		checkboxes.innerHTML += '<input type="checkbox" id="' + key + '" name="' + key + '" /> <label for="' + key + '">' + BadgeTypes[i].value + '</label><br>';
+	}
+	chrome.storage.sync.get(opts, function (items) {
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			var key = BadgeTypes[i].key;
+			document.getElementById(key).checked = items[key + 'Badge'];
+		}	
+		document.getElementById('transparentArticles').checked = items.transparentArticles;
 		document.getElementById('hideNotAvailable').checked = items.hideNotAvailable;
 	});
 }
