@@ -1,20 +1,39 @@
-// content.js
-alert("Welcome to ScienceDirect! Press the green icon to assess which of these researches are Peer-Reviewed!")
-
-chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.js */
-		function (request, sender, sendResponse) {
-			if (request.message === "everything_ready") {
-				//$( "#gs_qsuggest" ).removeClass( "gs_ri" ); /*To remove badge from suggested result div */
-				$('<img id="peer-review" src=' + chrome.extension.getURL("peer-review.png") + ' />').insertAfter(".article"); //add badge
-				$('<img id="peer-review" src=' + chrome.extension.getURL("peer-review.png") + ' />').insertAfter(".publicationHead"); //add badge
-
-				$('.title').each(function (i, obj) {
-					if (obj.childNodes[0].text != undefined) { // Evaluation 
-						console.log(obj.childNodes[0].text); //Title of research to be passed to API to check if peer reviewed/reproducible
-					} else {
-						console.log(obj.childNodes[2].text); //Title of research to be passed to API to check if peer reviewed/reproducible
-					}
-				});
-			}
+function ServiceProvider() {
+	
+	this.name = "ScienceDirect";
+	this.articleContainerQuery = '.articleList .detail';
+	this.retry = 0;
+	this.hasFilterBar = true;
+	
+	this.getFilterHtml = function(page) {
+		var html = '<fieldset><legend class="secTitles">Badge Types</legend><ol>';
+		for(var i = 0; i < page.types.length; i++) {
+			html += '<li>' + page.getSelectBoxHtml(page.types[i]) + ' ' + page.getSelectLabelHtml(page.types[i]) + '</li>';
 		}
-);
+		html += '</ol></fieldset>';
+		html += '<fieldset><legend class="secTitles">Badge Value Filter</legend><ol>';
+		for(var i = 0; i < page.types.length; i++) {
+			html += '<li>' + page.getFilterLabelHtml(page.types[i]) + '<br />' + page.getFilterBoxHtml(page.types[i]) + '</li>';
+		}
+		html += '</ol></fieldset>';
+		return html;
+	};
+	
+	this.insertFilter = function(page, html) {
+		$('#navBox_pubyear').before(html);
+	};
+	
+	this.getDoi = function(article) {
+		return null;
+	};
+	
+	this.getTitle = function(article) {
+		return article.getContainerElement().find('.title').find('h2').text().trim();
+	};
+	
+	this.insertBadgeContainer = function(article) {
+		var elem = article.getContainerElement().find('li.external');
+		$('<div id="'+ article.getBadgesContainerName() +'" style="min-height: 1.5em; vertical-align: middle;"></div>').insertAfter(elem);
+	};
+		
+}
