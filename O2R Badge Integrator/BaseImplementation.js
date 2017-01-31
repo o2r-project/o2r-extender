@@ -111,27 +111,39 @@ function Page(settings) {
 	
 	this.getFilterBoxId = function(type) {
 		return 'filter_' + type;
-	}
+	};
 	
 	this.getSelectBoxId = function(type) {
 		return 'select_' + type;
-	}
+	};
 	
 	this.getSelectBoxHtml = function(type) {
 		return '<input type="checkbox" class="ce_selectbox updateOnChange" id="' + this.getSelectBoxId(type.key) + '"' + this.getPreselection(type.key) + ' />';
-	}
+	};
 	
 	this.getSelectLabelHtml = function(type) {
 		return '<label class="ce_selectlabel" for="' + this.getSelectBoxId(type.key) + '">' + type.value + '</label>';
-	}
+	};
 	
 	this.getFilterBoxHtml = function(type) {
-		return '<input type="text" id="' + this.getFilterBoxId(type.key) + '" class="ce_filterbox updateOnBlur" />';
-	}
+		switch(type.filter.type) {
+			case 'select':
+				var html = '<select id="' + this.getFilterBoxId(type.key) + '" class="ce_filterbox updateOnChange">';
+				html += '<option value="" selected="selected"></option>';
+				for(var i = 0; i < type.filter.values.length; i++) {
+					var value = type.filter.values[i];
+					html += '<option value="' + value + '">' + value + '</option>';
+				}
+				html += '</select>';
+				return html;
+			default: // text
+				return '<input type="text" id="' + this.getFilterBoxId(type.key) + '" class="ce_filterbox updateOnBlur" />';
+		}
+	};
 	
 	this.getFilterLabelHtml = function(type) {
 		return '<label class="ce_filterlabel" for="' + this.getFilterBoxId(type.key) + '">' + type.value + ':</label>';
-	}
+	};
 	
 	this.getFilterValueFromPage = function(type) {
 		var str = $('#' + this.getFilterBoxId(type)).val();
@@ -189,6 +201,15 @@ function Badge(type, article) {
 	this.getImageElement = function() {
 		return this.getContainerElement().find('svg');
 	};
+	
+	this.getBadgeType = function() {
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			if (this.type === BadgeTypes[i].key) {
+				return BadgeTypes[i];
+			}
+		}
+		return null;
+	}
 	
 	this.getDocUrl = function() {
 		return infoURL + '#' + this.type;
@@ -272,8 +293,20 @@ function Badge(type, article) {
 		}
 		
 		var filter = page.getFilterValueFromPage(this.type);
-		if (filter && this.value.toLowerCase().indexOf(filter.toLowerCase()) !== -1) {
-			this.article.markInteresting();
+		if (filter) {
+			var badgeValue = this.value.toLowerCase();
+			var filterValue = filter.toLowerCase();
+			var badgeType = this.getBadgeType();
+			var found = false;
+			if (badgeType.filter.type === 'select') {
+				found = (badgeValue === filterValue);
+			}
+			else {
+				found = (badgeValue.indexOf(filterValue) !== -1);
+			}
+			if (found) {
+				this.article.markInteresting();
+			}
 		}
 	};
 
