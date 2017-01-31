@@ -369,7 +369,7 @@ function Article(container, page, id) {
 			this.makeBadges();
 			this.update();
 		}
-		else {
+		else if (this.title !== null) {
 			// Create by Title
 			var that = this;
 			$.ajax({
