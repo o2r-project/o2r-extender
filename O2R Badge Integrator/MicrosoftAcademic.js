@@ -8,14 +8,14 @@ function ServiceProvider() {
 	this.getFilterHtml = function(page) {
 		var html = '<div class="filter-group">';
 		html += '<h4><span>Badge Types</span></h4><ul>';
-		for(var i = 0; i < page.types.length; i++) {
-			html += '<li>' + page.getSelectBoxHtml(page.types[i]) + ' ' + page.getSelectLabelHtml(page.types[i]) + '</li>';
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			html += '<li>' + page.getSelectBoxHtml(BadgeTypes[i]) + ' ' + page.getSelectLabelHtml(BadgeTypes[i]) + '</li>';
 		}
 		html += '</ul></div>';
 		html += '<div class="filter-group">';
 		html += '<h4><span>Badge Value Filter</span></h4><ul>';
-		for(var i = 0; i < page.types.length; i++) {
-			html += '<li>' + page.getFilterLabelHtml(page.types[i]) + page.getFilterBoxHtml(page.types[i]) + '</li>';
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			html += '<li>' + page.getFilterLabelHtml(BadgeTypes[i]) + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
 		}
 		html += '</ul></div>';
 		return html;

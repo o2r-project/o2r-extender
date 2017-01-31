@@ -11,24 +11,24 @@
 		{
 			"matches": ["https://scholar.google.de/*", "https://scholar.google.com/*"],
 			"css": ["GoogleScholar.css"],
-			"js": ["jquery-3.1.1.min.js", "GoogleScholar.js", "BaseImplementation.js"]
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "GoogleScholar.js", "BaseImplementation.js"]
 		},
 		{
 			"matches": ["https://www.plos.org/*"],
-			"js": ["jquery-3.1.1.min.js", "PLOS.js", "BaseImplementation.js"]
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "PLOS.js", "BaseImplementation.js"]
 		},
 		{
 			"matches": ["https://www.mendeley.com/*"],
-			"js": ["jquery-3.1.1.min.js", "Mendeley.js", "BaseImplementation.js"]
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "Mendeley.js", "BaseImplementation.js"]
 		},
 		{
 			"matches": ["https://academic.microsoft.com/*"],
 			"css": ["MicrosoftAcademic.css"],
-			"js": ["jquery-3.1.1.min.js", "MicrosoftAcademic.js", "BaseImplementation.js"]
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "MicrosoftAcademic.js", "BaseImplementation.js"]
 		},
 		{
 			"matches": ["http://www.sciencedirect.com/*"],
-			"js": ["jquery-3.1.1.min.js", "ScienceDirect.js", "BaseImplementation.js"]
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "ScienceDirect.js", "BaseImplementation.js"]
 		}
 	],
 	"browser_action": {

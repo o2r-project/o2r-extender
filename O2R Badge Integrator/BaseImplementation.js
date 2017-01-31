@@ -7,16 +7,14 @@ var sp = null;
 chrome.runtime.onMessage.addListener(/* */
 	function (request, sender, sendResponse) {
 		if (request.message === "everything_ready") {
-			// TODO: When adding a new badge, apply this here
-			chrome.storage.sync.get({
-				executableBadge: true,
-				peerreviewBadge: true,
-				licenceBadge: true,
-				spatialBadge: true,
-				releasetimeBadge: true,
+			var opts = {
 				transparentArticles: true,
 				hideNotAvailable: false
-			}, function (items) {
+			};
+			for(var i = 0; i < BadgeTypes.length; i++) {
+				opts[BadgeTypes[i].key + 'Badge'] = true;
+			}
+			chrome.storage.sync.get(opts, function (items) {
 				sp = new ServiceProvider();
 				console.log('Badge Integratior: Loaded ' + sp.name);
 				page = new Page(items);
@@ -42,14 +40,6 @@ function Page(settings) {
 	
 	this.articles = new Array();
 	this.settings = settings;
-	this.types = [
-		// TODO: When adding a new badge, applz this here
-		{key: 'executable', value: 'Executable'}
-		,{key: 'licence', value: 'Licence'}
-		,{key: 'peerreview', value: 'Peer review'}
-		,{key: 'spatial', value: 'Research location'}
-//		,{key: 'releasetime', value: 'Release time'}
-	];
 
 	this.bootstrap = function() {
 		this.insertFilter();
@@ -77,10 +67,6 @@ function Page(settings) {
 		for(var i = 0; i < this.articles.length; i++) {
 			this.articles[i].update();
 		}
-	};
-	
-	this.getTypes = function() {
-		return this.types;
 	};
 	
 	this.getSetting = function(key) {
@@ -115,8 +101,8 @@ function Page(settings) {
 	
 	this.hasFilterSet = function() {
 		var hasFilter = false;
-		for(var i = 0; i < this.types.length; i++) {
-			if (this.getFilterValueFromPage(this.types[i].key)) {
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			if (this.getFilterValueFromPage(BadgeTypes[i].key)) {
 				hasFilter = true;
 			}
 		}
@@ -180,22 +166,20 @@ function Badge(type, article) {
 	this.getApiUrl = function() {
 		var doi = this.article.getDoi();
 		var urlEncodedDoi = doi.replace("/", "%2F");
-		// TODO: Move to Page.types
-		switch(type) {
-			// TODO: When adding a new badge, applz this here
-			case 'peerreview':
-				return apiURL + 'peerreview/doaj/doi:' + doi;
-			case 'licence':
-				return apiURL + 'licence/o2r/doi:' + urlEncodedDoi;
-			case 'executable':
-				return apiURL + 'executable/o2r/doi:' + urlEncodedDoi;
-			case 'spatial':
-				return apiURL + 'spatial/o2r/doi:' + urlEncodedDoi;
-			case 'releasetime':
-				return apiURL + 'releasetime/o2r/doi:' + urlEncodedDoi;
-			default: 
-				return null;
+
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			if (BadgeTypes[i].key == type) {
+				var url = apiURL + BadgeTypes[i].apiPath;
+				if (BadgeTypes[i].doiEncoded) {
+					url += urlEncodedDoi;
+				}
+				else {
+					url += doi;
+				}
+				return url;
+			}
 		}
+		return null;
 	};
 	
 	this.getContainerElement = function() {
@@ -419,9 +403,8 @@ function Article(container, page, id) {
 	
 	this.makeBadges = function() {
 		sp.insertBadgeContainer(this);
-		var types = this.page.getTypes();
-		for(var i = 0; i < types.length; i++) {
-			this.badges.push(new Badge(types[i].key, this));
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			this.badges.push(new Badge(BadgeTypes[i].key, this));
 		}
 	};
 	

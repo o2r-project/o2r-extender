@@ -8,16 +8,16 @@ function ServiceProvider() {
 	this.getFilterHtml = function(page) {
 		var html = '<ul id="gs_lnv_bad" class="gs_pad">';
 		html += '<li class="gs_sel"><a href="#">Badge Types</a></li>';
-		for(var i = 0; i < page.types.length; i++) {
-			html += '<li class="gs_ind"><a href="#">' + page.getSelectBoxHtml(page.types[i]) + ' ' + page.getSelectLabelHtml(page.types[i]) + '</a></li>';
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			html += '<li class="gs_ind"><a href="#">' + page.getSelectBoxHtml(BadgeTypes[i]) + ' ' + page.getSelectLabelHtml(BadgeTypes[i]) + '</a></li>';
 		}
 		html += '</ul>';
 		html += '<div class="gs_pad"><div class="gs_hr"></div></div>';
 		html += '<ul id="gs_lnv_bad" class="gs_pad">';
 		html += '<li class="gs_sel"><a href="#">Badge Value Filter</a></li>';
-		for(var i = 0; i < page.types.length; i++) {
-			html += '<li class="gs_ind">' + page.getFilterLabelHtml(page.types[i]) + '</li>';
-			html += '<li class="gs_ind">' + page.getFilterBoxHtml(page.types[i]) + '</li>';
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			html += '<li class="gs_ind">' + page.getFilterLabelHtml(BadgeTypes[i]) + '</li>';
+			html += '<li class="gs_ind">' + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
 		}
 		html += '</ul>';
 		html += '<div class="gs_pad"><div class="gs_hr"></div></div>';

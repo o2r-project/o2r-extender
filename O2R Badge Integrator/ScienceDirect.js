@@ -7,13 +7,13 @@ function ServiceProvider() {
 	
 	this.getFilterHtml = function(page) {
 		var html = '<fieldset><legend class="secTitles">Badge Types</legend><ol>';
-		for(var i = 0; i < page.types.length; i++) {
-			html += '<li>' + page.getSelectBoxHtml(page.types[i]) + ' ' + page.getSelectLabelHtml(page.types[i]) + '</li>';
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			html += '<li>' + page.getSelectBoxHtml(BadgeTypes[i]) + ' ' + page.getSelectLabelHtml(BadgeTypes[i]) + '</li>';
 		}
 		html += '</ol></fieldset>';
 		html += '<fieldset><legend class="secTitles">Badge Value Filter</legend><ol>';
-		for(var i = 0; i < page.types.length; i++) {
-			html += '<li>' + page.getFilterLabelHtml(page.types[i]) + '<br />' + page.getFilterBoxHtml(page.types[i]) + '</li>';
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			html += '<li>' + page.getFilterLabelHtml(BadgeTypes[i]) + '<br />' + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
 		}
 		html += '</ol></fieldset>';
 		return html;
