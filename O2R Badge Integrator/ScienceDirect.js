@@ -13,7 +13,7 @@ function ServiceProvider() {
 		html += '</ol></fieldset>';
 		html += '<fieldset><legend class="secTitles">Badge Value Filter</legend><ol>';
 		for(var i = 0; i < BadgeTypes.length; i++) {
-			html += '<li>' + page.getFilterLabelHtml(BadgeTypes[i]) + '<br />' + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
+			html += '<li class="' + page.getFilterContainerClass(BadgeTypes[i].key) + '">' + page.getFilterLabelHtml(BadgeTypes[i]) + '<br />' + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
 		}
 		html += '</ol></fieldset>';
 		return html;
