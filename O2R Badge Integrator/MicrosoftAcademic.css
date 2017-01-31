@@ -1,0 +1,11 @@
+input[type=checkbox].ce_selectbox {
+	display: inline;
+}
+
+.ce_selectlabel{
+	display: inline;
+}
+
+.ce_filterbox {
+	width: 90%;
+}

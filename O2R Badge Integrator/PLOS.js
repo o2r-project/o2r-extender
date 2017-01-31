@@ -1,44 +1,48 @@
-// content.js
-var doi;
-alert("Welcome to PLOS! Please wait while these search results are being assessed for peer-review & executability...")
-
-chrome.runtime.onMessage.addListener(/*Listen to JSON response from background.js */
-		function (request, sender, sendResponse) {
-			if (request.message === "everything_ready") {
-				//$('<img id="Executability Status" src='+chrome.extension.getURL("Executability-Yes-brightgreen.png")+' />').css('display', 'inline-block').insertAfter( ".gs-title>a" ); // add badge after each result with styling
-				//$('<img id="Executability Status" src='+chrome.extension.getURL("executability.png")+' />').css('margin-left', '20px').insertAfter( ".gs-title>a" ); // add badge after each result with styling
-				$('.gs-title>a').each(function (i, obj) {
-					if (i % 2 != 0) { /*Return every second result, otherwise there is double duplicate results */
-
-						/* Extract DOI From link URL*/
-						var link = obj.href;
-						var index = obj.href.indexOf("id") + 3;
-						var PDFindex = obj.href.indexOf("PDF");
-
-						getDOI(link, index, PDFindex);
-
-						if (doi != "NONE") { //A valid DOI
-							console.log(doi)
-							$('<img id="peer-review" src=' + chrome.extension.getURL("peer-review.png") + ' />').insertAfter(obj)
-						} else { // no DOI found
-							console.log("no DOI found for " + obj.childNodes[0].textContent + " " + obj.childNodes[1].textContent);
-						}
-
-					}
-				});
-			}
-
-			function getDOI(link, index, PDFindex) {
-				if (index == -1) { //no id in result
-					doi = "NONE";
-				} else if (PDFindex == -1) { //no pdf in result
-					doi = (link.substr(index));
-				} else { //regular result
-					doi = (link.substr(index, link.length - 4));
+function ServiceProvider() {
+	
+	this.name = "PLOS";
+	this.articleContainerQuery = '.gsc-result';
+	this.retry = 1000;
+	this.hasFilterBar = false; // Filter not supported here, inserted elements get removed, probably by Ember.js or so
+	
+	this.getFilterHtml = function(page) {
+		return '';
+	};
+	
+	this.insertFilter = function(page, html) {
+		return;
+	};
+	
+	this.getDoi = function(article) {
+		var aElement = article.getContainerElement().find('a.gs-title');
+		var href = aElement.attr('href').toString();
+		var doi = this._getParameterFromUrl(href, 'id');
+		console.log("Found doi: " + doi);
+		return doi;
+	};
+	
+	this.getTitle = function(article) {
+		var titleElement = article.getContainerElement().find('a.gs-title');
+		return titleElement.text().trim();
+	};
+	
+	this.insertBadgeContainer = function(article) {
+		article.getContainerElement().find('.gs-per-result-labels').attr('id', article.getBadgesContainerName());
+	};
+	
+	this._getParameterFromUrl = function (url, variable) {
+		var parts = url.split('?');
+		if (parts.length === 2) {
+			var query = parts[1];
+			var vars = query.split("&");
+			for (var i = 0; i < vars.length; i++) {
+				var pair = vars[i].split("=");
+				if (pair[0] == variable) {
+					return pair[1];
 				}
-
 			}
-
-
 		}
-);
+		return null;
+	};
+		
+}
