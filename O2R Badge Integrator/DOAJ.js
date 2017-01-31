@@ -1,33 +1,50 @@
 function ServiceProvider() {
 	
-	this.name = "PLOS";
-	this.articleContainerQuery = '.gsc-result';
+	this.name = "DOAJ";
+	this.articleContainerQuery = '#facetview_results tr';
 	this.retry = 1000;
-	this.hasFilterBar = false; // Filter not supported here, inserted elements get removed, probably by Ember.js or so
+	this.hasFilterBar = true;
 	
 	this.getFilterHtml = function(page) {
-		return '';
+		var html = '<table class="facetview_filters table table-bordered table-condensed table-striped no-bottom" style="display: table;"><tbody>';
+		html += '<tr><td><span class="facetview_filtershow filterheader">Badge Types</span></td></tr>';
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			html += '<tr class="facetview_filtervalue"><td>' + page.getSelectBoxHtml(BadgeTypes[i]) + ' ' + page.getSelectLabelHtml(BadgeTypes[i]) + '</td></tr>';
+		}
+		html += '</tbody></table>';
+		html += '<table class="facetview_filters table table-bordered table-condensed table-striped no-bottom" style="display: table;"><tbody>';
+		html += '<tr><td><span class="facetview_filtershow filterheader">Badge Value Filter</span></td></tr>';
+		for(var i = 0; i < BadgeTypes.length; i++) {
+			html += '<tr class="facetview_filtervalue"><td>' + page.getFilterLabelHtml(BadgeTypes[i]) + page.getFilterBoxHtml(BadgeTypes[i]) + '</td></tr>';
+		}
+		html += '</tbody></table>';
+		return html;
 	};
 	
 	this.insertFilter = function(page, html) {
-		return;
+		$('#facetview_filters').prepend(html);
 	};
 	
 	this.getDoi = function(article) {
-		var aElement = article.getContainerElement().find('a.gs-title');
-		var href = aElement.attr('href').toString();
-		var doi = this._getParameterFromUrl(href, 'id');
-		console.log("Found doi: " + doi);
-		return doi;
+		var aElement = article.getContainerElement().find('a');
+		for(var i = 0; i < aElement.length; i++) {
+			var elem = $(aElement[i]);
+			var href = elem.attr('href');
+			if (href.indexOf('dx.doi.org') > -1) {
+				console.log("Found doi: " + elem.text());
+				return elem.text();
+			}
+		}
+		return null;
 	};
 	
 	this.getTitle = function(article) {
-		var titleElement = article.getContainerElement().find('a.gs-title');
-		return titleElement.text().trim();
+		return null;
 	};
 	
 	this.insertBadgeContainer = function(article) {
-		article.getContainerElement().find('.gs-per-result-labels').attr('id', article.getBadgesContainerName());
+		var elem = article.getContainerElement().find('.abstract_text');
+		$('<div id="'+ article.getBadgesContainerName() +'" style="min-height: 1.5em; vertical-align: middle;"></div>').insertAfter(elem);
 	};
 	
 	this._getParameterFromUrl = function (url, variable) {

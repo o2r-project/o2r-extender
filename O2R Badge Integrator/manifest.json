@@ -29,6 +29,11 @@
 		{
 			"matches": ["http://www.sciencedirect.com/*"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "ScienceDirect.js", "BaseImplementation.js"]
+		},
+		{
+			"matches": ["https://doaj.org/search?*"],
+			"css": ["DOAJ.css"],
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "DOAJ.js", "BaseImplementation.js"]
 		}
 	],
 	"browser_action": {
