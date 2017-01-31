@@ -16,8 +16,8 @@ function ServiceProvider() {
 		html += '<ul id="gs_lnv_bad" class="gs_pad">';
 		html += '<li class="gs_sel"><a href="#">Badge Value Filter</a></li>';
 		for(var i = 0; i < BadgeTypes.length; i++) {
-			html += '<li class="gs_ind">' + page.getFilterLabelHtml(BadgeTypes[i]) + '</li>';
-			html += '<li class="gs_ind">' + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
+			html += '<li class="gs_ind ' + page.getFilterContainerClass(BadgeTypes[i].key) + '">' + page.getFilterLabelHtml(BadgeTypes[i]) + '</li>';
+			html += '<li class="gs_ind ' + page.getFilterContainerClass(BadgeTypes[i].key) + '">' + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
 		}
 		html += '</ul>';
 		html += '<div class="gs_pad"><div class="gs_hr"></div></div>';

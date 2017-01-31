@@ -15,7 +15,7 @@ function ServiceProvider() {
 		html += '<div class="filter-group">';
 		html += '<h4><span>Badge Value Filter</span></h4><ul>';
 		for(var i = 0; i < BadgeTypes.length; i++) {
-			html += '<li>' + page.getFilterLabelHtml(BadgeTypes[i]) + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
+			html += '<li class="' + page.getFilterContainerClass(BadgeTypes[i].key) + '">' + page.getFilterLabelHtml(BadgeTypes[i]) + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
 		}
 		html += '</ul></div>';
 		return html;

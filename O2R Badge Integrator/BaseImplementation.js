@@ -67,6 +67,19 @@ function Page(settings) {
 		for(var i = 0; i < this.articles.length; i++) {
 			this.articles[i].update();
 		}
+		
+		if (sp.hasFilterBar) {
+			for(var i = 0; i < BadgeTypes.length; i++) {
+				var type = BadgeTypes[i].key;
+				var elem = $('.' + this.getFilterContainerClass(type));
+				if (this.getTypeVisibilityFromPage(type)) {
+					elem.show();
+				}
+				else {
+					elem.hide();
+				}
+			}
+		}
 	};
 	
 	this.getSetting = function(key) {
@@ -86,7 +99,14 @@ function Page(settings) {
 		if (!sp.hasFilterBar) {
 			return this.getTypeVisibilityFromSettings(type);
 		}
-		return $('#' + this.getSelectBoxId(type)).is(':checked');
+
+		var box = $('#' + this.getSelectBoxId(type));
+		if (box.length > 0) {
+			return box.is(':checked');
+		}
+		else {
+			return false;
+		}
 	};
 	
 	this.getPreselection = function(type) {
@@ -108,6 +128,10 @@ function Page(settings) {
 		}
 		return hasFilter;
 	};
+	
+	this.getFilterContainerClass = function(type) {
+		return 'filter_container_' + type;
+	}
 	
 	this.getFilterBoxId = function(type) {
 		return 'filter_' + type;
@@ -146,13 +170,14 @@ function Page(settings) {
 	};
 	
 	this.getFilterValueFromPage = function(type) {
-		var str = $('#' + this.getFilterBoxId(type)).val();
-		if (typeof str === 'string' && str.length > 0) {
-			return str;
+		var elem = $('#' + this.getFilterBoxId(type));
+		if (elem.length === 1) {
+			var str = elem.val();
+			if (typeof str === 'string' && str.length > 0) {
+				return str;
+			}
 		}
-		else {
-			return null;
-		}
+		return null;
 	};
 	
 	this.insertFilter = function() {

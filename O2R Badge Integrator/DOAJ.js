@@ -15,7 +15,7 @@ function ServiceProvider() {
 		html += '<table class="facetview_filters table table-bordered table-condensed table-striped no-bottom" style="display: table;"><tbody>';
 		html += '<tr><td><span class="facetview_filtershow filterheader">Badge Value Filter</span></td></tr>';
 		for(var i = 0; i < BadgeTypes.length; i++) {
-			html += '<tr class="facetview_filtervalue"><td>' + page.getFilterLabelHtml(BadgeTypes[i]) + page.getFilterBoxHtml(BadgeTypes[i]) + '</td></tr>';
+			html += '<tr class="facetview_filtervalue ' + page.getFilterContainerClass(BadgeTypes[i].key) + '"><td>' + page.getFilterLabelHtml(BadgeTypes[i]) + page.getFilterBoxHtml(BadgeTypes[i]) + '</td></tr>';
 		}
 		html += '</tbody></table>';
 		return html;
