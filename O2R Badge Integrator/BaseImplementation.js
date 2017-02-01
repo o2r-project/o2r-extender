@@ -49,7 +49,8 @@ function Page(settings) {
 			// so on DOM ready the pages are not really ready and we need to wait
 			// until we find actual content.
 			console.log('Badge Integratior: Scheduled retry...');
-			window.setTimeout(this.bootstrap, sp.retry);
+			var that = this;
+			window.setTimeout(function() { that.bootstrap(); }, sp.retry);
 		}
 		else {
 			var that = this;
