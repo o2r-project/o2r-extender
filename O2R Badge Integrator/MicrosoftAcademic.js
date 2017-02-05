@@ -45,7 +45,7 @@ function ServiceProvider() {
 	
 	this.insertBadgeContainer = function(article) {
 		var elem = article.getContainerElement().find('.paper-meta');
-		$('<div id="'+ article.getBadgesContainerName() +'" style="min-height: 1.5em; vertical-align: middle;"></div>').insertAfter(elem);
+		$('<div id="'+ article.getBadgesContainerName() +'"></div>').insertAfter(elem);
 	};
 		
 }

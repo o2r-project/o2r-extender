@@ -59,11 +59,11 @@ function ServiceProvider() {
 	this.insertBadgeContainer = function(article) {
 		if (ExtendedView) {
 			var elem = article.getContainerElement().find('#refersToAndreferredToBy');
-			$('<div class="ce_bigbadge_container" style="vertical-align: top;"><h2>Badges</h2><div id="'+ article.getBadgesContainerName() +'"></div></div>').insertAfter(elem);
+			$('<div class="ce_bigbadge_container"><h2>Badges</h2><div id="'+ article.getBadgesContainerName() +'"></div></div>').insertAfter(elem);
 		}
 		else {
 			var elem = article.getContainerElement().find('li.external');
-			$('<div id="'+ article.getBadgesContainerName() +'" style="min-height: 1.5em; vertical-align: middle;"></div>').insertAfter(elem);
+			$('<div id="'+ article.getBadgesContainerName() +'"></div>').insertAfter(elem);
 		}
 	};
 		
