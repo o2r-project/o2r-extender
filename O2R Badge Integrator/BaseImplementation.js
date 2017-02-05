@@ -27,11 +27,6 @@ chrome.runtime.onMessage.addListener(/* */
 	}
 );
 
-
-function init() {
-
-}
-
 function sendUpdateMessage() {
 	chrome.extension.sendMessage({"message": "update"});
 }
@@ -58,7 +53,7 @@ function Page(settings) {
 				that.addArticleByElement(obj);
 			});
 		}
-	}
+	};
 	
 	this.addArticleByElement = function(obj) {
 		this.articles.push(new Article(obj, this, this.articles.length));
