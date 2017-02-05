@@ -7,7 +7,7 @@ function ServiceProvider() {
 	
 	this.getArticleElements = function() {
 		if (ExtendedView) {
-			return []; // Not supported
+			return $('.content').find('.span9');
 		}
 		else {
 			return $('#facetview_results tr');
@@ -52,8 +52,13 @@ function ServiceProvider() {
 	};
 	
 	this.insertBadgeContainer = function(article) {
-		var elem = article.getContainerElement().find('.abstract_text');
-		$('<div id="'+ article.getBadgesContainerName() +'" style="min-height: 1.5em; vertical-align: middle;"></div>').insertAfter(elem);
+		if (ExtendedView) {
+			article.getContainerElement().append('<div class="ce_bigbadge_container row-fluid" style="margin-top: 30px"><div class="span1">&nbsp;</div><div class="span10"><p><strong>Badges</strong></p><div id="'+ article.getBadgesContainerName() +'"></div></div></div>');
+		}
+		else {
+			var elem = article.getContainerElement().find('.abstract_text');
+			$('<div id="'+ article.getBadgesContainerName() +'"></div>').insertAfter(elem);
+		}
 	};
 	
 	this._getParameterFromUrl = function (url, variable) {

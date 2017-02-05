@@ -14,15 +14,15 @@
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "GoogleScholar.js", "BaseImplementation.js"]
 		},
 		{
-			"matches": ["https://www.plos.org/*"],
+			"matches": ["https://www.plos.org/search?*"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "PLOS.js", "BaseImplementation.js"]
 		},
 		{
-			"matches": ["https://www.mendeley.com/*"],
+			"matches": ["https://www.mendeley.com/research-papers/search/*"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "Mendeley.js", "BaseImplementation.js"]
 		},
 		{
-			"matches": ["https://academic.microsoft.com/*"],
+			"matches": ["https://academic.microsoft.com/#/search?*"],
 			"css": ["MicrosoftAcademic.css"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "MicrosoftAcademic.js", "BaseImplementation.js"]
 		},
@@ -38,6 +38,11 @@
 			"matches": ["https://doaj.org/search?*"],
 			"css": ["DOAJ.css"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "DOAJ.js", "BaseImplementation.js"]
+		},
+		{
+			"matches": ["https://doaj.org/article/*"],
+			"css": ["DOAJ.css"],
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "DOAJ.js", "DetailImplementation.js", "BaseImplementation.js"]
 		}
 	],
 	"browser_action": {
