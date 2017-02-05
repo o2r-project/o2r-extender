@@ -51,7 +51,7 @@ function ServiceProvider() {
 	};
 	
 	this.insertBadgeContainer = function(article) {
-		$('<div id="'+ article.getBadgesContainerName() +'" style="min-height: 1.5em; vertical-align: middle;"></div>').insertAfter(this._getTitleContainer(article));
+		$('<div id="'+ article.getBadgesContainerName() +'"></div>').insertAfter(this._getTitleContainer(article));
 	};
 	
 	this._getTitleContainer = function(article) {

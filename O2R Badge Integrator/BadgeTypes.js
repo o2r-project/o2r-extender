@@ -1,5 +1,5 @@
-// TODO: When adding a new badge, apply this here
 var ExtendedView = false;
+// TODO: When adding a new badge, apply this here
 var BadgeTypes = [
 	{
 		key: 'executable', value: 'Executable',
