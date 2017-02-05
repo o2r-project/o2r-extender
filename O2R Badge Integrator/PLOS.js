@@ -1,9 +1,18 @@
 function ServiceProvider() {
 	
 	this.name = "PLOS";
-	this.articleContainerQuery = '.gsc-result';
 	this.retry = 1000;
+	this.delay = 0;
 	this.hasFilterBar = false; // Filter not supported here, inserted elements get removed, probably by Ember.js or so
+
+	this.getArticleElements = function() {
+		if (ExtendedView) {
+			return []; // Not supported
+		}
+		else {
+			return $('.gsc-result');
+		}
+	};
 	
 	this.getFilterHtml = function(page) {
 		return '';
@@ -23,7 +32,7 @@ function ServiceProvider() {
 	
 	this.getTitle = function(article) {
 		var titleElement = article.getContainerElement().find('a.gs-title');
-		return titleElement.text().trim();
+		return titleElement.text();
 	};
 	
 	this.insertBadgeContainer = function(article) {

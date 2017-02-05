@@ -1,9 +1,18 @@
 function ServiceProvider() {
 	
 	this.name = "ScienceDirect";
-	this.articleContainerQuery = '.articleList .detail';
 	this.retry = 0;
+	this.delay = (ExtendedView ? 1000 : 0);
 	this.hasFilterBar = true;
+	
+	this.getArticleElements = function() {
+		if (ExtendedView) {
+			return $('#centerInner');
+		}
+		else {
+			return $('.articleList .detail');
+		}
+	};
 	
 	this.getFilterHtml = function(page) {
 		var html = '<fieldset><legend class="secTitles">Badge Types</legend><ol>';
@@ -24,16 +33,38 @@ function ServiceProvider() {
 	};
 	
 	this.getDoi = function(article) {
-		return null;
+		if (ExtendedView) {
+			var href = article.getContainerElement().find('#ddDoi').attr('href');
+			if (href.indexOf('dx.doi.org') > -1) {
+				var doi = href.replace('http://dx.doi.org/', '');
+				console.log("Found doi: " + doi);
+				return doi;
+			}
+			return null;
+		}
+		else {
+			return null;
+		}
 	};
 	
 	this.getTitle = function(article) {
-		return article.getContainerElement().find('.title').find('h2').text().trim();
+		if (ExtendedView) {
+			return article.getContainerElement().find('.svTitle').text();
+		}
+		else {
+			return article.getContainerElement().find('.title').find('h2').text();
+		}
 	};
 	
 	this.insertBadgeContainer = function(article) {
-		var elem = article.getContainerElement().find('li.external');
-		$('<div id="'+ article.getBadgesContainerName() +'" style="min-height: 1.5em; vertical-align: middle;"></div>').insertAfter(elem);
+		if (ExtendedView) {
+			var elem = article.getContainerElement().find('#refersToAndreferredToBy');
+			$('<div class="ce_bigbadge_container" style="vertical-align: top;"><h2>Badges</h2><div id="'+ article.getBadgesContainerName() +'"></div></div>').insertAfter(elem);
+		}
+		else {
+			var elem = article.getContainerElement().find('li.external');
+			$('<div id="'+ article.getBadgesContainerName() +'" style="min-height: 1.5em; vertical-align: middle;"></div>').insertAfter(elem);
+		}
 	};
 		
 }

@@ -1,9 +1,18 @@
 function ServiceProvider() {
 	
 	this.name = "Google Scholar";
-	this.articleContainerQuery = '.gs_r';
 	this.retry = 0;
+	this.delay = 0;
 	this.hasFilterBar = true;
+	
+	this.getArticleElements = function() {
+		if (ExtendedView) {
+			return []; // Not supported
+		}
+		else {
+			return $('.gs_r');
+		}
+	};
 	
 	this.getFilterHtml = function(page) {
 		var html = '<ul id="gs_lnv_bad" class="gs_pad">';
@@ -38,7 +47,7 @@ function ServiceProvider() {
 			// Citation
 			return null;
 		}
-		return titleElement.text().replace(/\[[^\]]+\]/g, "").trim();
+		return titleElement.text().replace(/\[[^\]]+\]/g, "");
 	};
 	
 	this.insertBadgeContainer = function(article) {

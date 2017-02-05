@@ -1,9 +1,18 @@
 function ServiceProvider() {
 	
 	this.name = "Microsoft Academic";
-	this.articleContainerQuery = '.paper-tile2';
 	this.retry = 1000;
+	this.delay = 0;
 	this.hasFilterBar = true;
+	
+	this.getArticleElements = function() {
+		if (ExtendedView) {
+			return []; // Not supported
+		}
+		else {
+			return $('.paper-tile2');
+		}
+	};
 	
 	this.getFilterHtml = function(page) {
 		var html = '<div class="filter-group">';
@@ -31,7 +40,7 @@ function ServiceProvider() {
 	
 	this.getTitle = function(article) {
 		var titleElement = article.getContainerElement().find('.title-bar');
-		return titleElement.text().trim();
+		return titleElement.text();
 	};
 	
 	this.insertBadgeContainer = function(article) {

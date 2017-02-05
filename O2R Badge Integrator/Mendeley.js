@@ -1,10 +1,19 @@
 function ServiceProvider() {
 	
 	this.name = "Mendeley";
-	this.articleContainerQuery = '.document';
 	this.retry = 0;
+	this.delay = 0;
 	this.hasFilterBar = true;
 	
+	this.getArticleElements = function() {
+		if (ExtendedView) {
+			return []; // Not supported
+		}
+		else {
+			return $('.document');
+		}
+	};
+
 	this.getFilterHtml = function(page) {
 		var html = '<div class="padding"><h2 class="heading-line"><span>Badge Types</span></h2><div class="extra-facet-filter">';
 		for(var i = 0; i < BadgeTypes.length; i++) {
@@ -34,7 +43,7 @@ function ServiceProvider() {
 	};
 	
 	this.getTitle = function(article) {
-		return article.getContainerElement().find('.title').text().trim();
+		return article.getContainerElement().find('.title').text();
 	};
 	
 	this.insertBadgeContainer = function(article) {

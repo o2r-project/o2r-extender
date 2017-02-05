@@ -37,17 +37,21 @@ function Page(settings) {
 	this.settings = settings;
 
 	this.bootstrap = function() {
-		this.insertFilter();
-		var articleElements = $(sp.articleContainerQuery);
-		if (articleElements.length === 0 && sp.retry > 0) {
+		var articleElements = sp.getArticleElements();
+		if (articleElements.length === 0 && sp.retry > 0 || sp.delay > 0) {
 			// Some pages like Microsoft Academic load their content by AJAX requests
 			// so on DOM ready the pages are not really ready and we need to wait
 			// until we find actual content.
-			console.log('Badge Integratior: Scheduled retry...');
+			console.log('Badge Integratior: Scheduled retry or delay...');
 			var that = this;
-			window.setTimeout(function() { that.bootstrap(); }, sp.retry);
+			window.setTimeout(function() { that.bootstrap(); }, Math.max(sp.retry, sp.delay));
+			sp.delay = 0;
 		}
 		else {
+			if (!ExtendedView) {
+				this.insertFilter();
+			}
+
 			var that = this;
 			articleElements.each(function (i, obj) {
 				that.addArticleByElement(obj);
@@ -200,17 +204,19 @@ function Badge(type, article) {
 		var doi = this.article.getDoi();
 		var urlEncodedDoi = doi.replace("/", "%2F");
 
-		for(var i = 0; i < BadgeTypes.length; i++) {
-			if (BadgeTypes[i].key == type) {
-				var url = apiURL + BadgeTypes[i].apiPath;
-				if (BadgeTypes[i].doiEncoded) {
-					url += urlEncodedDoi;
-				}
-				else {
-					url += doi;
-				}
-				return url;
+		var badgeType = this.getBadgeType();
+		if (badgeType) {
+			var url = apiURL + badgeType.apiPath;
+			if (badgeType.doiEncoded) {
+				url += urlEncodedDoi;
 			}
+			else {
+				url += doi;
+			}
+			if (ExtendedView) {
+				url += '/extended';
+			}
+			return url;
 		}
 		return null;
 	};
@@ -240,10 +246,8 @@ function Badge(type, article) {
 		var element = $('<span id="'+ this.getContainerName() +'">&nbsp;</span>');
 		this.article.getBadgeContainer().append(element);
 	};
-
-	this.insert = function() {
-		this.insertContainerElement();
-		
+	
+	this.insertSmallBadge = function() {
 		var that = this;
 		$.ajax({
 			url:  this.getApiUrl(),
@@ -262,6 +266,28 @@ function Badge(type, article) {
 			
 			that.parseSvg(data.responseText);
 		});
+	};
+	
+	this.insertBigBadge = function() {
+		var badgeType = this.getBadgeType();
+		if (badgeType && badgeType.extended) {
+			var html = '<a href= "' + this.getDocUrl() + '" target="_blank">';
+			html += '<img src="' + this.getApiUrl() + '" style="max-width: 33%;" alt="Badge" />';
+			html += '</a>';
+
+			this.getContainerElement().prepend(html);
+		}
+	};
+
+	this.insert = function() {
+		this.insertContainerElement();
+		
+		if (ExtendedView) {
+			this.insertBigBadge();
+		}
+		else {
+			this.insertSmallBadge();
+		}
 	};
 	
 	this.getPage = function() {
@@ -376,7 +402,11 @@ function Article(container, page, id) {
 	 * Extract research title from each search result
 	 */
 	this.getTitle = function () {
-		return sp.getTitle(this);
+		var title = sp.getTitle(this);
+		if (title) {
+			title = title.trim();
+		}
+		return title;
 	};
 	
 

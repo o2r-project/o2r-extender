@@ -27,8 +27,12 @@
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "MicrosoftAcademic.js", "BaseImplementation.js"]
 		},
 		{
-			"matches": ["http://www.sciencedirect.com/*"],
+			"matches": ["http://www.sciencedirect.com/science?*"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "ScienceDirect.js", "BaseImplementation.js"]
+		},
+		{
+			"matches": ["http://www.sciencedirect.com/science/article/*"],
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "ScienceDirect.js", "DetailImplementation.js", "BaseImplementation.js"]
 		},
 		{
 			"matches": ["https://doaj.org/search?*"],

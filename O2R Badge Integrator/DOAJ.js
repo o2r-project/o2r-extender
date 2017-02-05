@@ -1,10 +1,19 @@
 function ServiceProvider() {
 	
 	this.name = "DOAJ";
-	this.articleContainerQuery = '#facetview_results tr';
 	this.retry = 1000;
+	this.delay = 0;
 	this.hasFilterBar = true;
 	
+	this.getArticleElements = function() {
+		if (ExtendedView) {
+			return []; // Not supported
+		}
+		else {
+			return $('#facetview_results tr');
+		}
+	};
+
 	this.getFilterHtml = function(page) {
 		var html = '<table class="facetview_filters table table-bordered table-condensed table-striped no-bottom" style="display: table;"><tbody>';
 		html += '<tr><td><span class="facetview_filtershow filterheader">Badge Types</span></td></tr>';
