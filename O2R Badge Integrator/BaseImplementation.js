@@ -402,13 +402,20 @@ function Article(container, page, id) {
 				url: "https://api.crossref.org/works?query=" + this.title,
 				dataType: "json"
 			}).done(function (data) {
+				var results = 0;
 				for (var i in data.message.items) {
 					var cmpTitle = data.message.items[i].title.toString();
 					if (that.levenshteinDistance(that.title.toLowerCase(), cmpTitle.toLowerCase()) <= 4) {
 						that.doi = data.message.items[i].DOI;
-						that.makeBadges();
-						break;
+						results++;
 					}
+				}
+				 // Only add badges if there is one title matching otherwise we can't decide which is correct
+				if (results === 1) {
+					that.makeBadges();
+				}
+				else {
+					console.log("Skipped entry '" + that.title + "' due to " + results + " results.");
 				}
 			}).always(function() {
 				that.update();
