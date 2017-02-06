@@ -5,9 +5,15 @@ function ServiceProvider() {
 	this.delay = 0;
 	this.hasFilterBar = true;
 	
+	// The anchors (#) in the url don't allow proper matching in the manifest.json
+	// Therefore we detect it here manually
+	if (location.hash.indexOf('#/detail/') > -1) {
+		ExtendedView = true;
+	}
+	
 	this.getArticleElements = function() {
 		if (ExtendedView) {
-			return []; // Not supported
+			return $('.full-page-entity');
 		}
 		else {
 			return $('.paper-tile2');
@@ -39,13 +45,24 @@ function ServiceProvider() {
 	};
 	
 	this.getTitle = function(article) {
-		var titleElement = article.getContainerElement().find('.title-bar');
+		var query = ExtendedView ? '.entity-header' : '.title-bar';
+		var titleElement = article.getContainerElement().find(query).first();
 		return titleElement.text();
 	};
 	
 	this.insertBadgeContainer = function(article) {
-		var elem = article.getContainerElement().find('.paper-meta');
-		$('<div id="'+ article.getBadgesContainerName() +'"></div>').insertAfter(elem);
+		if (ExtendedView) {
+			var html = '<br /><div class="column-header"><h2 class="grey-title">Badges</h2></div><div class="ce_bigbadge_container card column-content entity-section" id="'+ article.getBadgesContainerName() +'"></div>';
+			article.getContainerElement().find('div.column-header').each(function() {
+				if ($(this).text().trim() == 'Abstract') {
+					$(this).next().after(html);
+				}
+			});
+		}
+		else {
+			var elem = article.getContainerElement().find('.paper-meta');
+			$('<div id="'+ article.getBadgesContainerName() +'"></div>').insertAfter(elem);
+		}
 	};
 		
 }
