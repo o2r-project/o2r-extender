@@ -18,6 +18,10 @@
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "PLOS.js", "BaseImplementation.js"]
 		},
 		{
+			"matches": ["http://journals.plos.org/plosone/article?*"],
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "PLOS.js", "DetailImplementation.js", "BaseImplementation.js"]
+		},
+		{
 			"matches": ["https://www.mendeley.com/research-papers/search/*"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "Mendeley.js", "BaseImplementation.js"]
 		},

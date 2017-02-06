@@ -7,7 +7,7 @@ function ServiceProvider() {
 
 	this.getArticleElements = function() {
 		if (ExtendedView) {
-			return []; // Not supported
+			return $('main');
 		}
 		else {
 			return $('.gsc-result');
@@ -23,20 +23,35 @@ function ServiceProvider() {
 	};
 	
 	this.getDoi = function(article) {
-		var aElement = article.getContainerElement().find('a.gs-title');
-		var href = aElement.attr('href').toString();
-		var doi = this._getParameterFromUrl(href, 'id');
-		console.log("Found doi: " + doi);
-		return doi;
+		if (ExtendedView) {
+			var href = article.getContainerElement().find('#artDoi a').attr('href');
+			if (href.indexOf('dx.doi.org') > -1) {
+				return href.replace('http://dx.doi.org/', '');
+			}
+		}
+		else {
+			var href = article.getContainerElement().find('a.gs-title').attr('href');
+			if (href) {
+				return this._getParameterFromUrl(href, 'id');
+			}
+		}
+		return null;
 	};
 	
 	this.getTitle = function(article) {
-		var titleElement = article.getContainerElement().find('a.gs-title');
+		var query = ExtendedView ? '#artTitle' : 'a.gs-title';
+		var titleElement = article.getContainerElement().find(query);
 		return titleElement.text();
 	};
 	
 	this.insertBadgeContainer = function(article) {
-		article.getContainerElement().find('.gs-per-result-labels').attr('id', article.getBadgesContainerName());
+		if (ExtendedView) {
+			var html = '<div class="ce_bigbadge_container"><h2>Badges</h2><div id="'+ article.getBadgesContainerName() +'"></div></div>';
+			article.getContainerElement().find('#artText').prepend(html);
+		}
+		else {
+			article.getContainerElement().find('.gs-per-result-labels').attr('id', article.getBadgesContainerName());
+		}
 	};
 	
 	this._getParameterFromUrl = function (url, variable) {
