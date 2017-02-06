@@ -22,7 +22,7 @@
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "Mendeley.js", "BaseImplementation.js"]
 		},
 		{
-			"matches": ["https://academic.microsoft.com/#/search?*"],
+			"matches": ["https://academic.microsoft.com/*"],
 			"css": ["MicrosoftAcademic.css"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "MicrosoftAcademic.js", "BaseImplementation.js"]
 		},
@@ -41,7 +41,6 @@
 		},
 		{
 			"matches": ["https://doaj.org/article/*"],
-			"css": ["DOAJ.css"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "DOAJ.js", "DetailImplementation.js", "BaseImplementation.js"]
 		}
 	],
