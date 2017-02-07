@@ -213,7 +213,8 @@ function Badge(type, article) {
 			else {
 				url += doi;
 			}
-			if (ExtendedView) {
+			var badgeType = this.getBadgeType();
+			if (badgeType.extended) {
 				url += '/extended';
 			}
 			return url;
@@ -270,13 +271,16 @@ function Badge(type, article) {
 	
 	this.insertBigBadge = function() {
 		var badgeType = this.getBadgeType();
+		var html = '<a href= "' + this.getDocUrl() + '" target="_blank">';
 		if (badgeType && badgeType.extended) {
-			var html = '<a href= "' + this.getDocUrl() + '" target="_blank">';
 			html += '<img src="' + this.getApiUrl() + '" style="max-width: 33%;" alt="Badge" />';
-			html += '</a>';
-
-			this.getContainerElement().prepend(html);
 		}
+		else {
+			html += '<img src="' + this.getApiUrl() + '" alt="Badge" />';
+		}
+		html += '</a>';
+
+		this.getContainerElement().prepend(html);
 	};
 
 	this.insert = function() {
