@@ -270,17 +270,19 @@ function Badge(type, article) {
 	};
 	
 	this.insertBigBadge = function() {
-		var badgeType = this.getBadgeType();
-		var html = '<a href= "' + this.getDocUrl() + '" target="_blank">';
-		if (badgeType && badgeType.extended) {
-			html += '<img src="' + this.getApiUrl() + '" style="max-width: 33%;" alt="Badge" />';
-		}
-		else {
-			html += '<img src="' + this.getApiUrl() + '" alt="Badge" />';
-		}
-		html += '</a>';
+		if (page.getTypeVisibilityFromSettings(this.type)) {
+			var badgeType = this.getBadgeType();
+			var html = '<a href= "' + this.getDocUrl() + '" target="_blank">';
+			if (badgeType && badgeType.extended) {
+				html += '<img src="' + this.getApiUrl() + '" style="max-width: 33%;" alt="Badge" />';
+			}
+			else {
+				html += '<img src="' + this.getApiUrl() + '" alt="Badge" />';
+			}
+			html += '</a>';
 
-		this.getContainerElement().prepend(html);
+			this.getContainerElement().prepend(html);
+		}
 	};
 
 	this.insert = function() {
