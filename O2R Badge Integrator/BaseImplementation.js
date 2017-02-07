@@ -214,7 +214,7 @@ function Badge(type, article) {
 				url += doi;
 			}
 			var badgeType = this.getBadgeType();
-			if (badgeType.extended) {
+			if (ExtendedView && badgeType.extended) {
 				url += '/extended';
 			}
 			return url;
