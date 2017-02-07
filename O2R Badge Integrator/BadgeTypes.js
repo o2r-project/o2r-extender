@@ -17,9 +17,9 @@ var BadgeTypes = [
 		key: 'licence', value: 'Licence',
 		apiPath: 'licence/o2r/doi:', doiEncoded: true, extended: true,
 		filter: {type: 'select', values: ['open', 'mostly open', 'partially open', 'closed']}
-	},/*{
-		key: 'releasetime', value: 'Release time',
-		apiPath: 'releasetime/o2r/doi:', doiEncoded: true, extended: true,
+	},{
+		key: 'release-date', value: 'Release date',
+		apiPath: 'release-date/crossref/doi:', doiEncoded: true, extended: false,
 		filter: {type: 'text'}
-	}*/
+	}
 ];
