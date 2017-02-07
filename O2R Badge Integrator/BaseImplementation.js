@@ -1,10 +1,10 @@
 var infoURL = "http://giv-project6.uni-muenster.de";
-var apiURL = "http://giv-project6.uni-muenster.de:3000/api/1.0/badge/";
+var apiURL = "https://o2r.uni-muenster.de/api/1.0/badge/";
 var page = null;
 var sp = null;
 
 // Listen to JSON response from background.js
-chrome.runtime.onMessage.addListener(/* */
+chrome.runtime.onMessage.addListener(
 	function (request, sender, sendResponse) {
 		if (request.message === "everything_ready") {
 			var opts = {
