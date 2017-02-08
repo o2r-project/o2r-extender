@@ -160,6 +160,9 @@ function Page(settings) {
 				}
 				html += '</select>';
 				return html;
+			case 'year_newer':
+				return '<small>newer than <input type="text" id="' + this.getFilterBoxId(type.key) + '" style="width: 4em;" class="ce_filterbox updateOnBlur" /></small>';
+				return html;
 			default: // text
 				return '<input type="text" id="' + this.getFilterBoxId(type.key) + '" class="ce_filterbox updateOnBlur" />';
 		}
@@ -361,6 +364,9 @@ function Badge(type, article) {
 			var found = false;
 			if (badgeType.filter.type === 'select') {
 				found = (badgeValue === filterValue);
+			}
+			else if (badgeType.filter.type === 'year_newer') {
+				found = (badgeValue >= filterValue);
 			}
 			else {
 				found = (badgeValue.indexOf(filterValue) !== -1);

@@ -11,7 +11,7 @@ var BadgeTypes = [{
 	},{
 		key: 'releasetime', value: 'Release time',
 		apiPath: 'releasetime/crossref/doi:', doiEncoded: true, extended: false,
-		filter: {type: 'text'}
+		filter: {type: 'year_newer'}
 	},{
 		key: 'peerreview', value: 'Peer review',
 		apiPath: 'peerreview/doaj/doi:', doiEncoded: false, extended: false,
