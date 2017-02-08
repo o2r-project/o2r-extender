@@ -270,18 +270,26 @@ function Badge(type, article) {
 	};
 	
 	this.insertBigBadge = function() {
-		if (page.getTypeVisibilityFromSettings(this.type)) {
-			var badgeType = this.getBadgeType();
-			var html = '<a href= "' + this.getDocUrl() + '" target="_blank">';
-			if (badgeType && badgeType.extended) {
-				html += '<img src="' + this.getApiUrl() + '" style="max-width: 33%;" alt="Badge" />';
+		var badgeType = this.getBadgeType();
+		if (badgeType && page.getTypeVisibilityFromSettings(this.type)) {
+			var html;
+			if (badgeType.extended === 'iframe') {
+				html = '<iframe src="' + this.getApiUrl() + '" scrolling="no" style="style="max-width: 99%; max-height: 200px; overflow: hidden;"></iframe>';
 			}
 			else {
-				html += '<img src="' + this.getApiUrl() + '" alt="Badge" />';
+				html = '<a href= "' + this.getDocUrl() + '" target="_blank">';
+				if (badgeType.extended === true) {
+					html += '<img src="' + this.getApiUrl() + '" style="max-width: 33%;" alt="Badge" />';
+				}
+				else {
+					html += '<img src="' + this.getApiUrl() + '" alt="Badge" />';
+				}
+				html += '</a>';
 			}
-			html += '</a>';
 
-			this.getContainerElement().prepend(html);
+			if (html) {
+				this.getContainerElement().prepend(html);
+			}
 		}
 	};
 
