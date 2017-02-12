@@ -277,12 +277,12 @@ function Badge(type, article) {
 		if (badgeType && page.getTypeVisibilityFromSettings(this.type)) {
 			var html;
 			if (badgeType.extended === 'iframe') {
-				html = '<iframe src="' + this.getApiUrl() + '" scrolling="no" style="style="max-width: 99%; max-height: 200px; overflow: hidden;"></iframe>';
+				html = '<iframe src="' + this.getApiUrl() + '" scrolling="no" style="width: 99%; height: 200px; overflow: hidden;"></iframe>';
 			}
 			else {
 				html = '<a href= "' + this.getDocUrl() + '" target="_blank">';
 				if (badgeType.extended === true) {
-					html += '<img src="' + this.getApiUrl() + '" style="max-width: 33%;" alt="Badge" />';
+					html += '<img src="' + this.getApiUrl() + '" style="max-width: 49%; max-height: 200px;" alt="Badge" />';
 				}
 				else {
 					html += '<img src="' + this.getApiUrl() + '" alt="Badge" />';
