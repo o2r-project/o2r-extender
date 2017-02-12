@@ -15,7 +15,7 @@ extension in the repository. Note: only one extension can be added at a time.
 
 ### Run in Chrome
 Upon succesful installation, you'll notice the applications' icon in the top-right corner next to the URL line. Navigate to your chosen website, search for the name of the research
-you are interested in, and click the extension icon (top right corner) to assess the search results.
+you are interested in, and everything will happen automatically. Filter and badges are loaded and nicely integrated into the service's search results.
 
 #### Supported services
 
