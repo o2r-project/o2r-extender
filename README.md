@@ -17,14 +17,11 @@ extension in the repository. Note: only one extension can be added at a time.
 Upon succesful installation, you'll notice the applications' icon in the top-right corner next to the URL line. Navigate to your chosen website, search for the name of the research
 you are interested in, and click the extension icon (top right corner) to assess the search results.
 
-#### The extension in detail
+#### Supported services
 
-[PLOS](https://www.plos.org/search?q=): Adding badge "Executability" to each search result and returning (to console log) the names of articles to be passed to API. 
-
-[ScienceDirect](http://www.sciencedirect.com/): Adding badge "peer review" to each search result and returning (to console log) the names of articles to be passed to API.
-
-[Google Scholar](https://scholar.google.de/): Adding badge "peer review" to each search result and returning (to console log) the names of articles to be passed to API. 
-
-[MS Academic Search](https://academic.microsoft.com/): Adding badge "Source" if an external source link is provided to each search result. 
-
-[Mendeley](https://www.mendeley.com/): Adding badge "Readers" if readers > 0 to each search result.
+* [PLOS](https://www.plos.org/): Partially supported, no filter (reason: technical problems with the PLOS JS framework)
+* [ScienceDirect](http://www.sciencedirect.com/): Fully supported
+* [Google Scholar](https://scholar.google.de/): Partially supported, no big badges (reason: no detail page)
+* [MS Academic Search](https://academic.microsoft.com/): Fully supported
+* [Mendeley](https://www.mendeley.com/): Fully supported
+* [DOAJ](https://www.doaj.org): Fully supported
