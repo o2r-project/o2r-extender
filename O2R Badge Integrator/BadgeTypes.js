@@ -9,16 +9,16 @@ var BadgeTypes = [{
 		apiPath: 'executable/o2r/doi:', doiEncoded: true, extended: true,
 		filter: {type: 'select', values: ['yes', 'running', 'no']}
 	},{
+		key: 'spatial', value: 'Research location',
+		apiPath: 'spatial/o2r/doi:', doiEncoded: true, extended: "iframe",
+		filter: {type: 'text'}
+	},{
 		key: 'releasetime', value: 'Release time',
 		apiPath: 'releasetime/crossref/doi:', doiEncoded: true, extended: false,
 		filter: {type: 'year_newer'}
 	},{
 		key: 'peerreview', value: 'Peer review',
 		apiPath: 'peerreview/doaj/doi:', doiEncoded: false, extended: false,
-		filter: {type: 'text'}
-	},{
-		key: 'spatial', value: 'Research location',
-		apiPath: 'spatial/o2r/doi:', doiEncoded: true, extended: "iframe",
 		filter: {type: 'text'}
 	}
 ];
