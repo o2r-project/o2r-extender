@@ -22,7 +22,7 @@ function addButton() {
     var filename = frwrap.innerText;
     
     var zenodoURL = window.location.href;
-    var finalURL = "https://o2r.uni-muenster.de/#!/home?zenodoURL=" + zenodoURL + "&filename=" + filename;
+    var finalURL = "https://o2r.uni-muenster.de/#!/home?shareURL=" + zenodoURL + "&filename=" + filename;
 
     openO2RPage(finalURL);
     event.preventDefault();
