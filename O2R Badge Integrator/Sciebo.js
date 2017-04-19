@@ -25,7 +25,7 @@ function addButton() {
 
   link.appendChild(imageSpan);
   link.appendChild(textSpan);
-  node.appendChild(link);
+  node.appendChild(link); 
   list.appendChild(node);
 
   link.addEventListener("click", function(event) {
@@ -67,9 +67,7 @@ function getPublicShare() {
     // 2nd, do http request to get the shareURL and path:
     var requestURL = "https://uni-muenster.sciebo.de/ocs/v2.php/apps/files_sharing/api/v1/shares?format=json&path=" + encodeURIComponent("/" + folderPath);
     requestURL += "&reshares=true";
-    //console.log(requestURL);
-    //("token: " + oc_requesttoken);
-    
+  
     var xhr = new XMLHttpRequest();
 
 
@@ -84,7 +82,6 @@ function getPublicShare() {
             var shareURL = result.ocs.data[0].url;
             var path = '/'; //clicking on a 
             var finalURL = "https://o2r.uni-muenster.de/#!/home?shareURL=" + shareURL + "&path=" + path;
-            //console.log(finalURL);
             openO2RPage(finalURL);
         }
     };
@@ -99,9 +96,6 @@ function getPublicShare() {
 
 function openO2RPage(url) {
     
-  //var hlink = document.createElement('a');
-  //hlink.setAttribute('href', url);
-  //hlink.click();
     window.open(url);
   //window.location.href = url;
     
