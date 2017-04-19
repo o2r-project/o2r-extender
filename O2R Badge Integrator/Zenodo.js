@@ -23,22 +23,28 @@ function addButton() {
     setBadge();
 
     var metadata = document.getElementsByClassName('well metadata')[0];
-    list = metadata.getElementsByTagName("DL")[0];
+    list = metadata.getElementsByTagName('DL')[0];
+    subjectElement = list.getElementsByTagName('DT')[2];
 
     span.appendChild(img);
     txt.appendChild(span);
-    list.appendChild(entry);
-    list.appendChild(txt);
+
+    //Insert nodes at the correct position (4*2 nodes)
+    list.insertBefore(txt, list.childNodes[8]);
+    list.insertBefore(entry, list.childNodes[8]);
+
+
+    // subjectElement.insertBefore(entry);
+    // subjectElement.insertBefore(txt);
   
  
-      
     // get filename from html
     var collapse = document.getElementById('collapseTwo');
     var frwrap = collapse.getElementsByClassName('forcewrap')[0];
     var filename = frwrap.innerText;
 
     var zenodoURL = window.location.href;
-    var finalURL = "https://o2r.uni-muenster.de/#!/home?shareURL=" + zenodoURL + "&filename=" + filename;
+    var finalURL = 'https://o2r.uni-muenster.de/#!/home?shareURL=' + zenodoURL + '&filename=' + filename;
 
     img.setAttribute('style', 'cursor: pointer');
     img.onclick = function() {
