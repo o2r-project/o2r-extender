@@ -53,11 +53,11 @@
 		},
 		{
 			"matches": ["https://uni-muenster.sciebo.de/*"],
-			"js": ["jquery-3.1.1.min.js", "Sciebo.js"]
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "Sciebo.js"]
 		},
 		{
 			"matches": ["https://zenodo.org/record/*", "https://sandbox.zenodo.org/record/*"],
-			"js": ["Zenodo.js"]
+			"js": ["BadgeTypes.js", "Zenodo.js"]
 		}
 	],
 	"browser_action": {

@@ -1,6 +1,10 @@
-addButton();
-
 var img;
+
+chrome.storage.sync.get(['zenodoRepository'], function(items) {
+    if (items.zenodoRepository) {
+        addButton();
+    }
+});
 
 function addButton() {
 
@@ -31,12 +35,7 @@ function addButton() {
 
     //Insert nodes at the correct position (4*2 nodes)
     list.insertBefore(txt, list.childNodes[8]);
-    list.insertBefore(entry, list.childNodes[8]);
-
-
-    // subjectElement.insertBefore(entry);
-    // subjectElement.insertBefore(txt);
-  
+    list.insertBefore(entry, list.childNodes[8]);  
  
     // get filename from html
     var collapse = document.getElementById('collapseTwo');
