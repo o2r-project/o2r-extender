@@ -22,3 +22,11 @@ var BadgeTypes = [{
 		filter: {type: 'text'}
 	}
 ];
+
+var RepositoryTypes = [{
+		key: 'sciebo', value: 'Sciebo'
+	},{
+		key: 'zenodo', value: 'Zenodo'
+	}
+];
+

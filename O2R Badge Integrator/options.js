@@ -9,6 +9,10 @@ function save_options() {
 		var key = BadgeTypes[i].key;
 		opts[key + 'Badge'] = document.getElementById(key).checked;
 	}
+	for(var i = 0; i < RepositoryTypes.length; i++) {
+		var key = RepositoryTypes[i].key;
+		opts[key + 'Repository'] = document.getElementById(key).checked;
+	}
 
 	chrome.storage.sync.set(opts, function () {
 		// Update status to let user know options were saved.
@@ -27,6 +31,7 @@ function restore_options() {
         transparentArticles: true,
         hideNotAvailable: false
 	};
+	//Restore badge settings
 	for(var i = 0; i < BadgeTypes.length; i++) {
 		var key = BadgeTypes[i].key;
 		
@@ -35,11 +40,24 @@ function restore_options() {
 		var checkboxes = document.getElementById('checkboxes');
 		checkboxes.innerHTML += '<input type="checkbox" id="' + key + '" name="' + key + '" /> <label for="' + key + '">' + BadgeTypes[i].value + '</label><br>';
 	}
+	//Restore ERC button settings
+	for(var i = 0; i < RepositoryTypes.length; i++) {
+		var key = RepositoryTypes[i].key;
+		
+		opts[key + 'Repository'] = true;
+		
+		var ercCheckboxes = document.getElementById('ercCheckboxes');
+		ercCheckboxes.innerHTML += '<input type="checkbox" id="' + key + '" name="' + key + '" /> <label for="' + key + '">' + RepositoryTypes[i].value + '</label><br>';
+	}
 	chrome.storage.sync.get(opts, function (items) {
-		for(var i = 0; i < BadgeTypes.length; i++) {
+		for(var i = 0; i < BadgeTypes.length; i++) { //Badges
 			var key = BadgeTypes[i].key;
 			document.getElementById(key).checked = items[key + 'Badge'];
 		}	
+		for(var i = 0; i < RepositoryTypes.length; i++) { //Repositories
+			var key = RepositoryTypes[i].key;
+			document.getElementById(key).checked = items[key + 'Repository'];
+		}
 		document.getElementById('transparentArticles').checked = items.transparentArticles;
 		document.getElementById('hideNotAvailable').checked = items.hideNotAvailable;
 	});
