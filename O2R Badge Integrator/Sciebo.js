@@ -1,10 +1,21 @@
-// Copyright (c) 2011 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 var list;
 
 var extVars = getVariables(["oc_requesttoken"]);
+
+chrome.storage.sync.get(['scieboRepository'], function(items) {
+    if (items.scieboRepository) {
+        window.addEventListener('load', function() {
+            chrome.storage.sync.get(opts, function (items) {
+                console.log("foo")
+            });
+
+            addClickEvent();
+        }, false);
+
+        // wait for async elements to load
+        setTimeout(addClickEvent, 1000);
+    }
+});
 
 function addButton() {
 
@@ -59,8 +70,6 @@ function getPublicShare() {
         folderPath = fPath + '/' + folderName;
     }
     
-    //console.log("folderpath: " + folderPath);
-    
     // get other attributes such as id, size, type, shareType, ... here
     // throw error if share type is wrong
 
@@ -95,10 +104,7 @@ function getPublicShare() {
 }
 
 function openO2RPage(url) {
-    
     window.open(url);
-  //window.location.href = url;
-    
 }
 
 function addClickEvent() {
@@ -110,13 +116,6 @@ function addClickEvent() {
         };
     }
 }
-
-window.addEventListener('load', function() {
-    addClickEvent();
-}, false);
-
-// wait for async elements to load
-setTimeout(addClickEvent, 1000);
 
 function getVariables(variables) {
     var ret = {};

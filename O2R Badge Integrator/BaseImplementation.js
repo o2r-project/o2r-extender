@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener(
 			}
 			chrome.storage.sync.get(opts, function (items) {
 				sp = new ServiceProvider();
-				console.log('Badge Integratior: Loaded ' + sp.name);
+				console.log('Badge Integrator: Loaded ' + sp.name);
 				page = new Page(items);
 				page.bootstrap();
 			});
