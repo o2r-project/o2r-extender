@@ -1,4 +1,6 @@
 var img;
+var infoBadges;
+var ercInfoBadge;
 
 chrome.storage.sync.get(['zenodoRepository'], function(items) {
     if (items.zenodoRepository) {
@@ -15,7 +17,7 @@ function addButton() {
 
     entry.innerText = 'ERC:';
     txt.setAttribute('itemprop', 'ERC');
-    span.classname = 'get-badge';
+    span.className = 'get-badge';
     span.setAttribute('data-toogle', 'tooltip');
     span.setAttribute('data-placement', 'bottom');
     span.setAttribute('title', '');
@@ -23,6 +25,12 @@ function addButton() {
 
     img.setAttribute('data-toogle','modal');
     img.setAttribute('src','https://img.shields.io/badge/ERC-not available-lightgrey.svg');
+
+    //small erc info button on the top:
+    ercInfoBadge = document.createElement('SPAN');
+    ercInfoBadge.className = 'label label-info';
+    ercInfoBadge.innerText = 'ERC';
+    infoBadges = document.getElementsByClassName('pull-right')[0];
 
     setBadge();
 
@@ -87,7 +95,10 @@ function setBadge() {
                 let file = files[i];
                 if (file.parentNode.innerText.endsWith('bagtainer.yml')) {
                     if (file.parentNode.parentNode.parentNode.id.startsWith('tree_item')) {
+                        // show the "erc-inspect" button
                         img.setAttribute('src','https://img.shields.io/badge/ERC-inspect-0D7EBE.svg');
+                        //additionally, show the erc info badge
+                        infoBadges.insertBefore(ercInfoBadge, infoBadges.childNodes[0] );
                     }
                 }
             }
@@ -96,6 +107,5 @@ function setBadge() {
     xhr.open('GET', requestURL, true);
     xhr.setRequestHeader('accept', '*/*');
     xhr.send(null);
-
 
 }
