@@ -1,9 +1,11 @@
 function save_options() {
 	var transparentArticles = document.getElementById('transparentArticles').checked;
 	var hideNotAvailable = document.getElementById('hideNotAvailable').checked;
+	var badgerEndpoint = document.getElementById('badgerEndpoint').value;
 	var opts = {
         transparentArticles: transparentArticles,
-        hideNotAvailable: hideNotAvailable
+        hideNotAvailable: hideNotAvailable,
+		badgerEndpoint: badgerEndpoint
 	};
 	for(var i = 0; i < BadgeTypes.length; i++) {
 		var key = BadgeTypes[i].key;
@@ -27,9 +29,11 @@ function save_options() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
+	//var badgerEndpoint = document.getElementById('badgerEndpoint');
 	var opts = {
         transparentArticles: true,
-        hideNotAvailable: false
+        hideNotAvailable: false,
+		badgerEndpoint: 'https://o2r.uni-muenster.de/api/1.0/badge/'
 	};
 	//Restore badge settings
 	for(var i = 0; i < BadgeTypes.length; i++) {
@@ -60,6 +64,7 @@ function restore_options() {
 		}
 		document.getElementById('transparentArticles').checked = items.transparentArticles;
 		document.getElementById('hideNotAvailable').checked = items.hideNotAvailable;
+		document.getElementById('badgerEndpoint').value = items.badgerEndpoint;
 	});
 }
 document.addEventListener('DOMContentLoaded', restore_options);
