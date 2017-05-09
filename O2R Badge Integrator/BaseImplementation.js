@@ -3,6 +3,12 @@ var apiURL = "https://o2r.uni-muenster.de/api/1.0/badge/";
 var page = null;
 var sp = null;
 
+chrome.storage.sync.get(['badgerEndpoint'], function(items) {
+    if (typeof items.badgerEndpoint !== 'undefined') {
+        apiURL = items.badgerEndpoint;
+    }
+});
+
 // Listen to JSON response from background.js
 chrome.runtime.onMessage.addListener(
 	function (request, sender, sendResponse) {
