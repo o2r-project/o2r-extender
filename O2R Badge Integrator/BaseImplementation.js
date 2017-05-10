@@ -457,7 +457,7 @@ function Article(container, page, id) {
 				for (var i in data.message.items) {
 					var cmpTitle = data.message.items[i].title.toString();
 					if (that.levenshteinDistance(that.title.toLowerCase(), cmpTitle.toLowerCase()) <= 4) {
-						that.doi = data.message.items[i].DOI;
+						that.doi = encodeURIComponent(data.message.items[i].DOI);
 						results++;
 					}
 				}
