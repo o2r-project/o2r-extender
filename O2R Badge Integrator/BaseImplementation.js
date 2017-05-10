@@ -39,7 +39,7 @@ function sendUpdateMessage() {
 
 function Page(settings) {
 	
-	this.articles = new Array();
+	this.articles = [];
 	this.settings = settings;
 
 	this.bootstrap = function() {
@@ -89,7 +89,7 @@ function Page(settings) {
 	};
 	
 	this.getSetting = function(key) {
-		if (this.settings !== null && typeof this.settings[key] !== undefined) {
+		if (this.settings !== null && typeof this.settings[key] !== 'undefined') {
 			return this.settings[key];
 		}
 		else {
@@ -137,7 +137,7 @@ function Page(settings) {
 	
 	this.getFilterContainerClass = function(type) {
 		return 'filter_container_' + type;
-	}
+	};
 	
 	this.getFilterBoxId = function(type) {
 		return 'filter_' + type;
@@ -220,7 +220,7 @@ function Badge(type, article) {
 				url += urlEncodedDoi;
 			}
 			else {
-				url += doi;
+				url += encodeURIComponent(doi);
 			}
 			var badgeType = this.getBadgeType();
 			if (ExtendedView && badgeType.extended) {
@@ -246,7 +246,7 @@ function Badge(type, article) {
 			}
 		}
 		return null;
-	}
+	};
 	
 	this.getDocUrl = function() {
 		return infoURL + '#' + this.type;
@@ -399,7 +399,7 @@ function Article(container, page, id) {
 	this.containerElement = $(container);
 	this.doi = null;
 	this.title = null;
-	this.badges = new Array();
+	this.badges = [];
 	
 
 	// Methods
@@ -457,7 +457,7 @@ function Article(container, page, id) {
 				for (var i in data.message.items) {
 					var cmpTitle = data.message.items[i].title.toString();
 					if (that.levenshteinDistance(that.title.toLowerCase(), cmpTitle.toLowerCase()) <= 4) {
-						that.doi = encodeURIComponent(data.message.items[i].DOI);
+						that.doi = data.message.items[i].DOI;
 						results++;
 					}
 				}
@@ -483,9 +483,9 @@ function Article(container, page, id) {
 
 	// Compute the edit distance between the two given strings
 	this.levenshteinDistance = function (a, b) {
-		if (a.length == 0)
+		if (a.length === 0)
 			return b.length;
-		if (b.length == 0)
+		if (b.length === 0)
 			return a.length;
 
 		var matrix = [];
@@ -505,7 +505,7 @@ function Article(container, page, id) {
 		// Fill in the rest of the matrix
 		for (i = 1; i <= b.length; i++) {
 			for (j = 1; j <= a.length; j++) {
-				if (b.charAt(i - 1) == a.charAt(j - 1)) {
+				if (b.charAt(i - 1) === a.charAt(j - 1)) {
 					matrix[i][j] = matrix[i - 1][j - 1];
 				} else {
 					matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, // substitution
