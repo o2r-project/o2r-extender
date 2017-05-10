@@ -85,14 +85,14 @@ function setBadge() {
 
     // inspect if the zip file has a folder 'data' with a file 'bagtainer.yml'
     xhr.onreadystatechange = function() {
-        if (xhr.readyState == XMLHttpRequest.DONE) {
+        if (xhr.readyState===XMLHttpRequest.DONE) {
             var el = document.createElement('html');
             el.innerHTML = xhr.responseText;
 
             var files = el.getElementsByClassName('fa fa-file-o');
 
             for (var i = 0; i < files.length; i++) {
-                let file = files[i];
+                var file = files[i];
                 if (file.parentNode.innerText.endsWith('bagtainer.yml')) {
                     if (file.parentNode.parentNode.parentNode.id.startsWith('tree_item')) {
                         // show the "erc-inspect" button

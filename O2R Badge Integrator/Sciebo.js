@@ -81,7 +81,7 @@ function getPublicShare() {
 
 
     xhr.onreadystatechange = function() {
-        if (xhr.readyState == XMLHttpRequest.DONE) {
+        if (xhr.readyState===XMLHttpRequest.DONE) {
             var result = JSON.parse(xhr.responseText);
             if (result.ocs.data.length === 0) {
                 alert('Could not get public share for this folder, please make sure to enable sharing ("Share link")');

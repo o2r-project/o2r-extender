@@ -54,7 +54,7 @@ function ServiceProvider() {
 		if (ExtendedView) {
 			var html = '<br /><div class="column-header"><h2 class="grey-title">Badges</h2></div><div class="ce_bigbadge_container card column-content entity-section" id="'+ article.getBadgesContainerName() +'"></div>';
 			article.getContainerElement().find('div.column-header').each(function() {
-				if ($(this).text().trim() == 'Abstract') {
+				if ($(this).text().trim()==='Abstract') {
 					$(this).next().after(html);
 				}
 			});
