@@ -1,7 +1,6 @@
-# _Work in progress_
 # Integrating badges using a Chrome Web Extension
 
-This project provides an API for installing a Chrome Web Extension that allows for integration of badges on several research websites and data repositories.
+This project contains a Chrome Web Extension that allows for integration of badges on several research websites and data repositories.
 
 Based on the study project "Badges for computational geoscience containers" available at [geocontainer-badges/reproducability](https://zivgitlab.uni-muenster.de/geocontainer-badges/reproducability).
 
@@ -15,9 +14,7 @@ In order to use this API, make sure that you have installed [Chrome](https://www
 
 ### Development installation
 
-1) Clone this repository:
-
-`git clone https://github.com/o2r-project/o2r-extender/`
+1) Clone this repository: `git clone https://github.com/o2r-project/o2r-extender/`
 
 2) Open `chrome://extensions/` in Chrome, click "Load unpacked extension..." and select the `O2R Badge Integrator` directory of this repository.
 
@@ -29,7 +26,7 @@ In order to use this API, make sure that you have installed [Chrome](https://www
 
 ### Usage
 
-Upon succesful installation, you'll notice the applications' icon in the top-right corner next to the URL line. Navigate to your chosen website, search for the name of the research
+Upon successful installation, you'll notice the applications' icon in the top-right corner next to the URL line. Navigate to your chosen website, search for the name of the research
 you are interested in, and everything will happen automatically. Filter and badges are loaded and nicely integrated into the service's search results.
 
 #### Supported research services
