@@ -9,14 +9,26 @@ Based on the study project "Badges for computational geoscience containers" avai
 
 In order to use this API, make sure that you have installed [Chrome](https://www.google.com/chrome/) and enabled extensions in Settings.
 
-Next, clone our repository:
+### Web store installation
 
-`git clone https://zivgitlab.uni-muenster.de/geocontainer-badges/reproducability`
+*coming soon*
 
-Open the Chrome browser > Click the three dots in the top right corner > Settings > Extensions > Load Unpacked Extension... > Select the folder containing each 
-extension in the repository. Note: only one extension can be added at a time.
+### Development installation
 
-### Run in Chrome
+1) Clone this repository:
+
+`git clone https://github.com/o2r-project/o2r-extender/`
+
+2) Open `chrome://extensions/` in Chrome, click "Load unpacked extension..." and select the `O2R Badge Integrator` directory of this repository.
+
+3) Start the o2r-badger to generate badges. [Installation instructions](https://github.com/o2r-project/o2r-badger#local-installation)
+
+4) Right click the new "o2r" extension icon and select `options`. Change the `Badge endpoint` setting to the local badger address, e.g. `http://localhost:8089/api/1.0/badge/`
+
+5) When visiting one of the supported websites (see below) make sure to select "Load unsafe scripts" in chrome
+
+### Usage
+
 Upon succesful installation, you'll notice the applications' icon in the top-right corner next to the URL line. Navigate to your chosen website, search for the name of the research
 you are interested in, and everything will happen automatically. Filter and badges are loaded and nicely integrated into the service's search results.
 
