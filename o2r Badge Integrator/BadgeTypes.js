@@ -6,7 +6,7 @@ var BadgeTypes = [{
 		filter: {type: 'select', values: ['open', 'mostly open', 'partially open', 'closed']}
 	},{
 		key: 'executable', value: 'Executable',
-		apiPath: 'executable/:', doiEncoded: true, extended: true,
+		apiPath: 'executable/', doiEncoded: true, extended: true,
 		filter: {type: 'select', values: ['yes', 'running', 'no']}
 	},{
 		key: 'spatial', value: 'Research location',
