@@ -6,6 +6,8 @@ var sp = null;
 chrome.storage.sync.get(['badgerEndpoint'], function(items) {
     if (typeof items.badgerEndpoint !== 'undefined') {
         apiURL = items.badgerEndpoint;
+        //add trailing slash
+        if (apiURL.substr(-1) !== '/') apiURL += '/';
     }
 });
 
@@ -15,17 +17,22 @@ chrome.runtime.onMessage.addListener(
 		if (request.message === "everything_ready") {
 			var opts = {
 				transparentArticles: true,
-				hideNotAvailable: false
+				hideNotAvailable: false,
+                enabled: true
 			};
 			for(var i = 0; i < BadgeTypes.length; i++) {
 				opts[BadgeTypes[i].key + 'Badge'] = true;
 			}
+
 			chrome.storage.sync.get(opts, function (items) {
-				sp = new ServiceProvider();
-				console.log('Badge Integrator: Loaded ' + sp.name);
-				page = new Page(items);
-				page.bootstrap();
-			});
+                if (items.enabled === false ) {
+                    return;
+                }
+                sp = new ServiceProvider();
+                console.log('Badge Integrator: Loaded ' + sp.name);
+                page = new Page(items);
+                page.bootstrap();
+            });
 		}
 		if (request.message === "update") {
 			page.update();
