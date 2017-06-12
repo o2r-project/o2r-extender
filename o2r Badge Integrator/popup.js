@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
     //restore state:
     chrome.storage.sync.get(['enabled'], function (items) {
         if (items.enabled === false ) {
-            button.innerText = 'Disable';
-        } else {
             button.innerText = 'Enable';
+        } else {
+            button.innerText = 'Disable';
         }
     });
 });
