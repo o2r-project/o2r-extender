@@ -4,8 +4,8 @@ function ServiceProvider() {
 	this.retry = 0;
 	this.delay = 0;
 	this.hasFilterBar = true;
-	
-	this.getArticleElements = function() {
+
+    this.getArticleElements = function() {
 		if (ExtendedView) {
 			return []; // Not supported
 		}
