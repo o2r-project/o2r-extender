@@ -2,10 +2,12 @@ function save_options() {
 	var transparentArticles = document.getElementById('transparentArticles').checked;
 	var hideNotAvailable = document.getElementById('hideNotAvailable').checked;
 	var badgerEndpoint = document.getElementById('badgerEndpoint').value;
+	var enabled = document.getElementById('globalEnable').checked;
 	var opts = {
         transparentArticles: transparentArticles,
         hideNotAvailable: hideNotAvailable,
-		badgerEndpoint: badgerEndpoint
+		badgerEndpoint: badgerEndpoint,
+		enabled: enabled
 	};
 	for(var i = 0; i < BadgeTypes.length; i++) {
 		var key = BadgeTypes[i].key;
@@ -15,6 +17,12 @@ function save_options() {
 		var key = RepositoryTypes[i].key;
 		opts[key + 'Repository'] = document.getElementById(key).checked;
 	}
+
+	if (enabled) {
+        chrome.browserAction.setIcon({path: "icons/icon.png"});
+    } else {
+        chrome.browserAction.setIcon({path: "icons/icon_disabled.png"});
+    }
 
 	chrome.storage.sync.set(opts, function () {
 		// Update status to let user know options were saved.
@@ -33,7 +41,8 @@ function restore_options() {
 	var opts = {
         transparentArticles: true,
         hideNotAvailable: false,
-		badgerEndpoint: 'https://o2r.uni-muenster.de/api/1.0/badge/'
+		badgerEndpoint: 'https://o2r.uni-muenster.de/api/1.0/badge/',
+        enabled: true
 	};
 	//Restore badge settings
 	for(var i = 0; i < BadgeTypes.length; i++) {
@@ -65,6 +74,7 @@ function restore_options() {
 		document.getElementById('transparentArticles').checked = items.transparentArticles;
 		document.getElementById('hideNotAvailable').checked = items.hideNotAvailable;
 		document.getElementById('badgerEndpoint').value = items.badgerEndpoint;
+		document.getElementById('globalEnable').checked = items.enabled;
 	});
 }
 document.addEventListener('DOMContentLoaded', restore_options);
