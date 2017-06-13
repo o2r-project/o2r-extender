@@ -11,12 +11,12 @@ function switchExtension(e) {
     var button = document.getElementById("enableButton");
     if (button.innerText === 'Enable') {
         button.innerText = 'Disable';
-        chrome.storage.sync.set({enabled : false});
-        chrome.browserAction.setIcon({path: "icons/icon_disabled.png"});
-    } else {
-        button.innerText = 'Enable';
         chrome.storage.sync.set({enabled : true});
         chrome.browserAction.setIcon({path: "icons/icon.png"});
+    } else {
+        button.innerText = 'Enable';
+        chrome.storage.sync.set({enabled : false});
+        chrome.browserAction.setIcon({path: "icons/icon_disabled.png"});
     }
 }
 
@@ -27,11 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
     helpPage.addEventListener('click', openPage);
     aboutPage.addEventListener('click', openPage);
     button.addEventListener('click', switchExtension);
+    console.log("added eventListeners");
 
     //restore state:
     chrome.storage.sync.get(['enabled'], function (items) {
         if (items.enabled === false ) {
             button.innerText = 'Enable';
+
         } else {
             button.innerText = 'Disable';
         }
