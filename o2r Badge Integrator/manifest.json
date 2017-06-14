@@ -52,7 +52,15 @@
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "DOAJ.js", "DetailImplementation.js", "BaseImplementation.js"]
 		},
 		{
-			"matches": ["https://uni-muenster.sciebo.de/*"],
+			"matches": ["https://www.scienceopen.com/search*"],
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "ScienceOpen.js", "BaseImplementation.js"]
+		},
+		{
+			"matches": ["https://www.scienceopen.com/document*"],
+			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "ScienceOpen.js", "DetailImplementation.js", "BaseImplementation.js"]
+		},
+		{
+			"matches": ["https://*.sciebo.de/*"],
 			"js": ["jquery-3.1.1.min.js", "BadgeTypes.js", "Sciebo.js"]
 		},
 		{
