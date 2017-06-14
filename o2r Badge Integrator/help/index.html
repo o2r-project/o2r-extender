@@ -53,7 +53,8 @@
         <img src="images/shields_io/licence_partially_open.svg" />
         <img src="images/shields_io/licence_closed.svg" />
         <img src="images/shields_io/licence_no_Information.svg" />
-
+        </br></br>
+        <p>Example link: <a href="https://o2r.uni-muenster.de/api/1.0/badge/licence/10.1103%2FPhysRev.47.777">https://o2r.uni-muenster.de/api/1.0/badge/licence/10.1103%2FPhysRev.47.777</a> </p>
     </div>
     <div class="col-md-6">
         <h3>Full size badges</h3>
@@ -81,6 +82,8 @@
         <img src="images/shields_io/Peer review-No-red.svg" />
         <img src="images/shields_io/Peer review-Unknown-lightgrey.svg" />
         <img src="images/shields_io/Peer review-Blind-brightgreen.svg" />
+        </br></br>
+        <p>Example link: <a href="https://o2r.uni-muenster.de/api/1.0/badge/peerreview/10.3389%2Ffpsyg.2013.00478">https://o2r.uni-muenster.de/api/1.0/badge/peerreview/10.3389%2Ffpsyg.2013.00478</a> </p>
     </div>
     <div class="col-md-6">
         <h3>Shields IO badges Peer Review</h3>
@@ -95,6 +98,8 @@
         <img src="images/shields_io/executable-no.svg" />
         <img src="images/shields_io/executable-running.svg" />
         <img src="images/shields_io/executable-noInfo.svg" />
+        </br></br>
+        <p>Example link: <a href="https://o2r.uni-muenster.de/api/1.0/badge/executable/10.1103%2FPhysRev.47.777">https://o2r.uni-muenster.de/api/1.0/badge/executable/10.1103%2FPhysRev.47.777</a> </p>
     </div>
     <div class="col-md-6">
         <h3>Full size badge</h3>
@@ -109,12 +114,17 @@
             is used for compendia, which have a running code, but the execution of the code isn't finished yet, the status then is "running.
             For a "fail" the red badge is sent if no information are available, the grey badge is sent.
         </p>
+        </br></br>
+        </br></br>
     </div>
 
     <h1 id="release">Release Time Badge</h1>
     <div class="col-md-6">
         <img src="images/shields_io/release_time-1999-lightgrey.svg" />
         <img src="images/shields_io/release_time-na-lightgrey.svg" />
+        </br></br>
+        <p>Example link: <a href="https://o2r.uni-muenster.de/api/1.0/badge/releasetime/10.1103%2FPhysRev.47.777">https://o2r.uni-muenster.de/api/1.0/badge/releasetime/10.1103%2FPhysRev.47.777</a> </p>
+        </br></br>
     </div>
     <div class="col-md-6">
         <h3>Shields IO badges Release Time</h3>
@@ -122,12 +132,17 @@
             Two possible examples are shown here. The badge shows the release year of a paper and in case that there is no
             release year given, the n/a badge is returned.
         </p>
+
     </div>
 
-    <h1 id="executability">Spatial information Badge</h1>
+    <h1 id="spatial">Spatial information Badge</h1>
     <div class="col-md-6">
         <img src="images/shields_io/spatial_information.svg"/>
+        </br></br>
+        <p>Example link: </br> <a href="https://o2r.uni-muenster.de/api/1.0/badge/spatial/10.1103%2FPhysRev.47.777">https://o2r.uni-muenster.de/api/1.0/badge/spatial/10.1103%2FPhysRev.47.777</a> </p>
     </div>
+
+
     <div class="col-md-6">
         <h3>Shields IO badges Spatial Information</h3>
         <p> The spatial information badge gives information about the research location, that means where a research was done.
@@ -136,20 +151,55 @@
             pairs, the mean center from the bounding box is calculated. These coordinates are send to the api which responds with the country name and if available also
             a district/region, which are the information that are shown in the shields.io badge.
         </p>
+
     </div>
+
     <div class="col-md-6">
         <img width="80%" src="images/maps.jpg" />
     </div>
+
     <div class="col-md-6">
         <h3>Map Visualization</h3>
         <p>The spatial badge, provides a map view of the bounding box displayed on a <a href="http://leafletjs.com/">Leaflet map</a>. The map centers its view to the center of the research location.
-            The map can be draged and zoomed interactively. Clicking on this map displays the attribution and copyright of the leaflet and <a href="http://osm.org">OpenStreetMap</a> contributors.
+            The map can be dragged and zoomed interactively. Clicking on this map displays the attribution and copyright of the leaflet and <a href="http://osm.org">OpenStreetMap</a> contributors.
         </p>
     </div>
 
+    </br></br>
+    </br></br>
 
+    <div class="col-md-7">
+        <h1>Supported research services</h1>
+        <p>The extension supports the following websites: </p>
+
+        <ul>
+          <li>PLOS: Partially supported, no filter (reason: technical problems with the PLOS JS framework)</li>
+          <li>ScienceDirect: Fully supported</li>
+          <li>Google Scholar: Partially supported, no big badges (reason: no detail page)</li>
+          <li>MS Academic Search: Fully supported</li>
+          <li>Mendeley: Fully supported</li>
+          <li>DOAJ: Fully supported</li>
+        </ul> 
+
+        <p>Example searches:</p>
+
+        <ul>
+          <li><a href="https://www.plos.org/search?q=reproducibility">PLOS</a></li>
+          <li><a href="http://www.sciencedirect.com/science?_ob=ArticleListURL&_method=list&_ArticleListID=-1218601242&_sort=r&_st=13&view=c&md5=f0e6b576870c6c39c6a4bd39c519204e&searchtype=a">ScienceDirect</a></li>
+          <li><a href="https://scholar.google.de/scholar?hl=en&q=reproducibility&btnG=&as_sdt=1%2C5&as_sdtp=&oq=reproducibility">Google Scholar</a></li>
+          <li><a href="https://academic.microsoft.com/#/search?iq=%2540reproducibility%2540&q=reproducibility&filters=&from=0&sort=0">MS Academic</a></li>
+          <li><a href="https://www.mendeley.com/research-papers/?query=Graphene">Mendeley</a></li>
+          <li><a href="https://doaj.org/search?source=%7B%22query%22%3A%7B%22query_string%22%3A%7B%22query%22%3A%22reproducibility%22%2C%22default_operator%22%3A%22AND%22%7D%7D%2C%22from%22%3A0%2C%22size%22%3A10%7D">DOAJ</a></li>
+        </ul> 
+
+        </br></br>
+        </br></br>
+
+    </div>
 
 </div><!-- /.container -->
+
+
 
 
 <!-- Bootstrap core JavaScript
