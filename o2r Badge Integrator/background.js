@@ -15,3 +15,12 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
 	  chrome.tabs.sendMessage(tabs[0].id, message);
 	});
  });
+
+//restore "disabled" option
+chrome.storage.sync.get(['enabled'], function (items) {
+    if (items.enabled === false ) {
+        chrome.browserAction.setIcon({path: "icons/icon_disabled.png"});
+    } else {
+        chrome.browserAction.setIcon({path: "icons/icon.png"});
+    }
+});

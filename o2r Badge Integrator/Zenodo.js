@@ -2,8 +2,13 @@ var img;
 var infoBadges;
 var ercInfoBadge;
 
-chrome.storage.sync.get(['zenodoRepository'], function(items) {
-    if (items.zenodoRepository) {
+var opts = {
+    zenodoRepository: true,
+    enabled: true
+};
+
+chrome.storage.sync.get(opts, function(items) {
+    if (items.zenodoRepository && items.enabled) {
         addButton();
     }
 });

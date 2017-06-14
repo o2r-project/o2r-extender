@@ -2,8 +2,12 @@ var list;
 
 var extVars = getVariables(["oc_requesttoken"]);
 
-chrome.storage.sync.get(['scieboRepository'], function(items) {
-    if (items.scieboRepository) {
+var opts = {
+    scieboRepository: true,
+    enabled: true
+};
+chrome.storage.sync.get(opts, function(items) {
+    if (items.scieboRepository && items.enabled) {
         window.addEventListener('load', function() {
             chrome.storage.sync.get(opts, function (items) {
                 console.log("foo")

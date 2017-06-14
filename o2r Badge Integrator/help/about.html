@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>About the project</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">About the Project</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="topbar">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="index.html">Geocontainer Badges</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container">
+    <h1> About the Project </h1>
+    <h3>The topic</h3>
+    <p>This project aims to create badges that helps in making research reproducible.
+        That is, the badges will explain the state of any component (for example data, code and articles) in a research
+        so that it can be understood by others when they have a look at it later and possibly even build upon it.
+        The badges aim to display the state of key factors about the research such that the output is very evident and presented right at the face of it.</p>
+
+    <p>The results are presented in an interactive manner that gives the display of the badge an even better meaning.
+        The results are provided with a certain colored background which depends on the type of output. For example a positive result is shown with a green color,
+        a negative result is shown with a red color and intermediate results are sometimes in yellow or orange color, again depending upon the specific type of outcome.</p>
+
+    <p>In this project key aspects about a research that a user is interested in knowing are represented evidently on the badges.
+        For example a user might want to know if a research is peer-reviewed or not, in order to get an idea about the quality of the research.
+        Similarly a user might also be interested to know about the licensing or the executibility of a code in a research.
+        These important factors along with some more are displayed on the badges along with their results.</p>
+
+    <h3>Why badges?</h3>
+    <p>Nowadays, we get into contact with badges nearly everyday, e.g in software development communities (see: <a href="http://shields.io" target="_blank">shields.io</a>) and digital learning (see: <a href="http://openbadges.org/" target="_blank">openbadges.org</a>)
+        Badges provide a concise, recognizable yet useful piece of information, such as the build state or the number of downloads.
+    </p>
+    <h3>Our API</h3>
+    <p>There is a part of the API that is the same for every task. That base part is as following:</p>
+
+    <p><b>/api/1.0/badge</b></p>
+
+    <p>The rest of the API is case dependent. The structure would be dependent on the name of the task, platform from which metadata of a research is taken,
+        the id for calling a particular research compendium and a final addition which is optional in case you want to request a big badge, is the keyword "extended".
+        Example APIs are provided below:</p>
+
+    <p>This is an example from the licensing task:</p>
+
+    <p><b>/api/1.0/badge/licence/id/extended (returns a big badge)</b></p>
+
+    <img src="images/license_noData_code.svg" /></br>
+
+    <p><b>/api/1.0/badge/licence/id (returns a small badge)</b></p>
+
+    <img src="images/shields_io/licence_partially_open.svg" /></br></br>
+
+    <p>This is an example from the executibility task:</p>
+
+    <p><b>/api/1.0/badge/executable/id/extended (returns a big badge)</b></p>
+
+    <img src="images/Executable_Green.svg" style="width: 30%" /></br></br>
+
+    <p><b>/api/1.0/badge/executable/id (returns a small badge)</b></p>
+
+    <img src="images/shields_io/executable-yes-brightgreen.svg" /></br></br>
+
+    <h3>Opening Reproducible Research (o2r)</h3>
+
+    <img src="images/o2r-logo-print.png" /></br>
+
+    <p>The extender is part of the o2r project, a DFG-funded research project. It aims to improve reproducibility in modern research. You can find more about the project <a href="http://o2r.info/about/">here</a>. </p>
+
+    <a href="https://github.com/o2r-project/o2r-extender" target="_blank">Here</a> you can find the link to the current GitHub repository of the o2r extender. For feedback and suggestions, feel free to create a Github issue.</br>
+
+    <h3>The Study Project</h3>
+    <p>This study project was realized at the <a href="http://www.uni-muenster.de/Geoinformatics/en/">Institute for Geoinformatics (ifgi)</a> at the University of Münster under the supervision of Daniel Nüst during the winter term 2016/17. </br>
+        The participants of the project team are: </br>
+        Antonia van Eek, Clara Rendel, Lasse Einfeldt, Laura Meierkort, Marlena Götza, Salman Khalid, Shahzeib Tariq Jaswal, Nimrod Gavish, Matthias Mohr and Daniel Nüst.
+
+    <h3>Gitlab Link</h3>
+    <a href="https://zivgitlab.uni-muenster.de/geocontainer-badges" target="_blank">Here</a> you can find the link to the Gitlab repository with the code of the project. </br>
+
+    <h3>License</h3>
+
+    <p> The extender is an open source project and licensed under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).</p>
+    </br></br></br></br>
+
+</div>
+</body>
+
+
+</html>
