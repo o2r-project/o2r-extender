@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>Geocontainer Badges</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">Geocontainer Badges</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="topbar">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="about.html">About the project</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container">
+    <h1 id="licence">Licencing Information Badge</h1>
+    <div class="col-md-6">
+        <img src="images/license_noData_code.svg" /></br>
+        <img src="images/shields_io/licence_open.svg" />
+        <img src="images/shields_io/licence_mostly_open.svg" />
+        <img src="images/shields_io/licence_partially_open.svg" />
+        <img src="images/shields_io/licence_closed.svg" />
+        <img src="images/shields_io/licence_no_Information.svg" />
+        </br></br>
+        <p>Example link: <a href="https://o2r.uni-muenster.de/api/1.0/badge/licence/10.1103%2FPhysRev.47.777">https://o2r.uni-muenster.de/api/1.0/badge/licence/10.1103%2FPhysRev.47.777</a> </p>
+    </div>
+    <div class="col-md-6">
+        <h3>Full size badges</h3>
+        <p>The badges for licencing information consist of three information parts.
+            Information about the code-licence, the data-licence and the text-licence are included in the badge.
+            The code licences of research compendia are compared to the list of <a href="http://licenses.opendefinition.org/licenses/groups/osi.json">OSI-comliant</a> licences.
+            If the licence is part of this list, the code category gets a green tick and is, therefore, open. If the licence is not included in the
+            list of OSI-compliant licences, it is marked with a red cross as closed. For no included metadata on the code licence, a grey questionmark is used
+            for the representation of no available information on licencing information.
+            Data-and text-licences are both compared to the list of <a href="http://licenses.opendefinition.org/licenses/groups/od.json">OD-compliant</a> licences.
+            The procedure of getting a category for the badge is the same as with the code-licence. The levels are open, closed and no information available.
+            The whole badge is categorised afterwards with the wigted information of these three licences. If every licene is open, the compendium retrieves a green badge,
+            if two of three are open, it retrieves a yellow badge. Orange badges represent partially open compendia, with one of three licences open. A red badge signals
+            every single category with non open-source licences. If no information is available for all categories, the badge is grey.
+        </p>
+        <h3>Shields IO badges License</h3>
+        <p>These are small representations of the full-size badges. They are used to give a brief overview on the licencing information.
+            The same colour-scheme is used as with the full-size badges.
+        </p>
+    </div>
+
+    <h1 id="peer review">Peer Review Badge</h1>
+    <div class="col-md-6">
+        <img src="images/shields_io/Peer review-Yes-brightgreen.svg" />
+        <img src="images/shields_io/Peer review-No-red.svg" />
+        <img src="images/shields_io/Peer review-Unknown-lightgrey.svg" />
+        <img src="images/shields_io/Peer review-Blind-brightgreen.svg" />
+        </br></br>
+        <p>Example link: <a href="https://o2r.uni-muenster.de/api/1.0/badge/peerreview/10.3389%2Ffpsyg.2013.00478">https://o2r.uni-muenster.de/api/1.0/badge/peerreview/10.3389%2Ffpsyg.2013.00478</a> </p>
+    </div>
+    <div class="col-md-6">
+        <h3>Shields IO badges Peer Review</h3>
+        <p>For the the peer review status, there are no full-sized badge and the information is included in Shields.IO badges. Moreover, there are no set number of return badges since the DOI is passed to the DOAJ API and can receive numerous results regarding the peer-reviewed status of a research. Nonetheless, 4 possible examples are shown here. The API DOAJ contains peer-reviewed only, therefore if a research title matches it will return the "Peer Review - YES" green badge. Likewise, if the research is not found it will return the "Peer Review - NO" red badge. Unknown shall be returned for researches hosted on DOAJ that do not have peer review information associated with them. Lastly, the "Peer Review - Blind" badge, is returned for researches in which the names of reviewers are hidden from the author. Either single Blind review or double blind review is considered, as explained <a href="https://www.elsevier.com/reviewers/what-is-peer-review">here.</a>
+        </p>
+    </div>
+
+    <h1 id="executability">Executability Badge</h1>
+    <div class="col-md-6">
+        <img src="images/Executable_Green.svg" style="width: 60%"/></br>
+        <img src="images/shields_io/executable-yes-brightgreen.svg" />
+        <img src="images/shields_io/executable-no.svg" />
+        <img src="images/shields_io/executable-running.svg" />
+        <img src="images/shields_io/executable-noInfo.svg" />
+        </br></br>
+        <p>Example link: <a href="https://o2r.uni-muenster.de/api/1.0/badge/executable/10.1103%2FPhysRev.47.777">https://o2r.uni-muenster.de/api/1.0/badge/executable/10.1103%2FPhysRev.47.777</a> </p>
+    </div>
+    <div class="col-md-6">
+        <h3>Full size badge</h3>
+        <p>The full size badges display the information for executability with visual information. For the positive badge, a green background is used
+            and a tick is shown. For no executability the badge is red and displays a cross. Still running compendia show an hourglass on yellow background.
+            If no information is available, the badge is grey and shows a questionmark.
+        </p>
+        <h3>Shields IO badges Executability</h3>
+        <p>For the executable status, there are also no full-sized badge and the information is included in Shields.IO badges.
+            After the request from a client with an doi was done, the corresponding o2r id is matched to it.
+            If the code in a compendium is executable, the status is "success" the green badge is sent to the client. The yellow badge
+            is used for compendia, which have a running code, but the execution of the code isn't finished yet, the status then is "running.
+            For a "fail" the red badge is sent if no information are available, the grey badge is sent.
+        </p>
+        </br></br>
+        </br></br>
+    </div>
+
+    <h1 id="release">Release Time Badge</h1>
+    <div class="col-md-6">
+        <img src="images/shields_io/release_time-1999-lightgrey.svg" />
+        <img src="images/shields_io/release_time-na-lightgrey.svg" />
+        </br></br>
+        <p>Example link: <a href="https://o2r.uni-muenster.de/api/1.0/badge/releasetime/10.1103%2FPhysRev.47.777">https://o2r.uni-muenster.de/api/1.0/badge/releasetime/10.1103%2FPhysRev.47.777</a> </p>
+        </br></br>
+    </div>
+    <div class="col-md-6">
+        <h3>Shields IO badges Release Time</h3>
+        <p>For the release time status, there are no full-sized badges since the release time information is included in Shields.IO badges.
+            Two possible examples are shown here. The badge shows the release year of a paper and in case that there is no
+            release year given, the n/a badge is returned.
+        </p>
+
+    </div>
+
+    <h1 id="spatial">Spatial information Badge</h1>
+    <div class="col-md-6">
+        <img src="images/shields_io/spatial_information.svg"/>
+        </br></br>
+        <p>Example link: </br> <a href="https://o2r.uni-muenster.de/api/1.0/badge/spatial/10.1103%2FPhysRev.47.777">https://o2r.uni-muenster.de/api/1.0/badge/spatial/10.1103%2FPhysRev.47.777</a> </p>
+    </div>
+
+
+    <div class="col-md-6">
+        <h3>Shields IO badges Spatial Information</h3>
+        <p> The spatial information badge gives information about the research location, that means where a research was done.
+            For receiving the spatial information reverse geocoding with the <a href="http://geonames.org">geonames.org</a> api is used. The base for running this
+            is a JSON file that contains two coordinate pairs representing a bounding box which contains the research location. As the api only accepts coordinate
+            pairs, the mean center from the bounding box is calculated. These coordinates are send to the api which responds with the country name and if available also
+            a district/region, which are the information that are shown in the shields.io badge.
+        </p>
+
+    </div>
+
+    <div class="col-md-6">
+        <img width="80%" src="images/maps.jpg" />
+    </div>
+
+    <div class="col-md-6">
+        <h3>Map Visualization</h3>
+        <p>The spatial badge, provides a map view of the bounding box displayed on a <a href="http://leafletjs.com/">Leaflet map</a>. The map centers its view to the center of the research location.
+            The map can be dragged and zoomed interactively. Clicking on this map displays the attribution and copyright of the leaflet and <a href="http://osm.org">OpenStreetMap</a> contributors.
+        </p>
+    </div>
+
+    </br></br>
+    </br></br>
+
+    <div class="col-md-7">
+        <h1>Supported research services</h1>
+        <p>The extension supports the following websites: </p>
+
+        <ul>
+          <li>PLOS: Partially supported, no filter (reason: technical problems with the PLOS JS framework)</li>
+          <li>ScienceDirect: Fully supported</li>
+          <li>Google Scholar: Partially supported, no big badges (reason: no detail page)</li>
+          <li>MS Academic Search: Fully supported</li>
+          <li>Mendeley: Fully supported</li>
+          <li>DOAJ: Fully supported</li>
+        </ul> 
+
+        <p>Example searches:</p>
+
+        <ul>
+          <li><a href="https://www.plos.org/search?q=reproducibility">PLOS</a></li>
+          <li><a href="http://www.sciencedirect.com/science?_ob=ArticleListURL&_method=list&_ArticleListID=-1218601242&_sort=r&_st=13&view=c&md5=f0e6b576870c6c39c6a4bd39c519204e&searchtype=a">ScienceDirect</a></li>
+          <li><a href="https://scholar.google.de/scholar?hl=en&q=reproducibility&btnG=&as_sdt=1%2C5&as_sdtp=&oq=reproducibility">Google Scholar</a></li>
+          <li><a href="https://academic.microsoft.com/#/search?iq=%2540reproducibility%2540&q=reproducibility&filters=&from=0&sort=0">MS Academic</a></li>
+          <li><a href="https://www.mendeley.com/research-papers/?query=Graphene">Mendeley</a></li>
+          <li><a href="https://doaj.org/search?source=%7B%22query%22%3A%7B%22query_string%22%3A%7B%22query%22%3A%22reproducibility%22%2C%22default_operator%22%3A%22AND%22%7D%7D%2C%22from%22%3A0%2C%22size%22%3A10%7D">DOAJ</a></li>
+        </ul> 
+
+        </br></br>
+        </br></br>
+
+    </div>
+
+</div><!-- /.container -->
+
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
