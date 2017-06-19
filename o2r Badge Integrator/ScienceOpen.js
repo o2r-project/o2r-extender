@@ -35,7 +35,17 @@ function ServiceProvider() {
 	};
 	
 	this.getDoi = function(article) {
-		return null;
+		if (ExtendedView) {
+			var href = article.getContainerElement().find("[itemprop='sameAs']").attr('href');
+			if (href.indexOf('dx.doi.org') > -1) {
+				return href.replace('http://dx.doi.org/', '');
+			}
+		} else {	
+			var dataDoi = article.getContainerElement().find("[data-badge-type='4']").attr('data-doi');
+			if (dataDoi.indexOf('dx.doi.org') > -1) {
+				return dataDoi;
+			}
+		}
 	};
 	
 	this.getTitle = function(article) {
