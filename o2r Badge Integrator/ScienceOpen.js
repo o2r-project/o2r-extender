@@ -7,7 +7,7 @@ function ServiceProvider() {
 	
 	this.getArticleElements = function() {
 		if (ExtendedView) {
-			return $('.so-main-section');
+			return $('.so-main-bg');
 		}
 		else {
 			return $('.so-article-list-item');
@@ -35,17 +35,7 @@ function ServiceProvider() {
 	};
 	
 	this.getDoi = function(article) {
-		if (ExtendedView) {
-			var href = article.getContainerElement().find("[itemprop='sameAs']").attr('href');
-			if (href.indexOf('dx.doi.org') > -1) {
-				return href.replace('http://dx.doi.org/', '');
-			}
-		} else {	
-			var dataDoi = article.getContainerElement().find("[data-badge-type='4']").attr('data-doi');
-			if (dataDoi.indexOf('dx.doi.org') > -1) {
-				return dataDoi;
-			}
-		}
+		return article.getContainerElement().find("[data-badge-type='4']").attr('data-doi');
 	};
 	
 	this.getTitle = function(article) {
@@ -57,11 +47,7 @@ function ServiceProvider() {
 	this.insertBadgeContainer = function(article) {
 		if (ExtendedView) {
 			var html = '<br /><div class="column-header"><h2 class="grey-title">Badges</h2></div><div class="ce_bigbadge_container card column-content entity-section" id="'+ article.getBadgesContainerName() +'"></div>';
-			article.getContainerElement().find('div.column-header').each(function() {
-				if ($(this).text().trim()==='Abstract') {
-					$(this).next().after(html);
-				}
-			});
+			article.getContainerElement().find('div.so-layout-section').append(html);
 		}
 		else {
 			var elem = article.getContainerElement().find('.so-article-list-item-text');
