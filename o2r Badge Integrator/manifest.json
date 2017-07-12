@@ -1,6 +1,6 @@
 {
 	"manifest_version": 2,
-	"name": "o2r Badge Integrator",
+	"name": "Open Reproducible Research Extender",
 	"version": "0.3.2",
 	"permissions": ["webNavigation", "*://*/*", "storage"],
 	"options_page": "options.html",
