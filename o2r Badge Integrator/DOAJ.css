@@ -6,3 +6,7 @@
 .ce_selectlabel{
 	display: inline;
 }
+
+div[id^='badges-'] {
+	width: 133%;
+}

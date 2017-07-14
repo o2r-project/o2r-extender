@@ -9,3 +9,7 @@ input[type=checkbox].ce_selectbox {
 .ce_filterbox {
 	width: 90%;
 }
+
+div[id^='badges-'] {
+	width: 133%;
+}
