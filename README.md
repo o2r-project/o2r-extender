@@ -67,9 +67,14 @@ npm install -g chrome-webstore-upload-cli
 
 **Release process**
 
-- [create a new release on GitHub](https://github.com/o2r-project/o2r-extender/releases/new) (make sure version number is increased, see `Opening Reproducible Research Extender/manifest.json`), tag it with the version from `manifest.json` prepended with `v`, e.g. `v0.1.0`
+- [create a new release on GitHub](https://github.com/o2r-project/o2r-extender/releases/new) (make sure version number is increased, see `extension/manifest.json`), tag it with the version from `manifest.json` prepended with `v`, e.g. `v0.1.0`
   - add relevant PRs to the release description
-- download zip file and unzip, go to directory `Opening Reproducible Research Extender`
+- download zip file and unzip, go to directory `extension`
+```bash
+wget https://github.com/o2r-project/o2r-extender/archive/v0.3.3.zip
+unzip v*.zip
+cd cd o2r-extender-*/extension
+```
 - put keys and IDs into environment variables:
 ```bash
 EXTENSION_ID=fhhfncpkfohlhphlcgpkbpialfhkmbil
