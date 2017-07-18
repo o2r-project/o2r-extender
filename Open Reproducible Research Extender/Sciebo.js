@@ -66,13 +66,14 @@ function getPublicShare() {
 
     var folder = findParentNodeWithName('TR', list);
     var folderName = folder.getAttribute('data-file');
-    var fPath = decodeURIComponent(window.location.href.split("dir=")[1]);
+    var fPath = getParameterByName('dir');
     var folderPath = '';
     if (fPath === '/' || fPath === undefined || fPath === "undefined" ) { // if currently in base direcotry you just need the filename
         folderPath = folderName;
     } else { //otherwise you need the full path of that folder
         folderPath = fPath + '/' + folderName;
     }
+    console.log("Folder path is: " + folderPath);
     
     // get other attributes such as id, size, type, shareType, ... here
     // throw error if share type is wrong
@@ -105,6 +106,16 @@ function getPublicShare() {
     xhr.send(null);
 
 
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
 function openO2RPage(url) {

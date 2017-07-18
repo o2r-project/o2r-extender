@@ -1,6 +1,9 @@
 # Integrating badges using a Chrome Web Extension
 
-This project contains a Chrome Web Extension that allows for integration of badges on several [research websites](#Supported research services). Additionally, it integrates action buttons for the o2r project into [data repositories](#Supported data repositories) and [collaboration platforms](#Supported collaboration platforms).
+
+The o2r-extender is part of the [o2r project](http://o2r.info) which aims to make reproduction of research results possbile:
+
+The o2r-extender consists of a Chrome Web Extension that allows for integration of badges on several [research websites](#Supported-research-services). Additionally, it integrates buttons for the o2r project into [data repositories](#Supported-data-repositories) and [collaboration platforms](#Supported-collaboration-platforms).
 
 Based on the study project "Badges for computational geoscience containers" available at [geocontainer-badges/reproducability](https://zivgitlab.uni-muenster.de/geocontainer-badges/reproducability).
 
@@ -33,8 +36,7 @@ In order to use this API, make sure that you have installed [Chrome](https://www
 
 ### Usage
 
-Upon successful installation, you will notice the applications' icon in the top-right corner next to the URL line. Navigate to your chosen website, search for the name of the research
-you are interested in, and everything will happen automatically. Filter and badges are loaded and nicely integrated into the service's search results.
+Upon successful installation, you will notice the applications' icon in the top-right corner next to the URL line. Navigate to your chosen website, search for the name of the research you are interested in, and everything will happen automatically. Filter and badges are loaded and nicely integrated into the service's search results.
 
 #### Supported research services
 
@@ -52,3 +54,21 @@ you are interested in, and everything will happen automatically. Filter and badg
 #### Supported collaboration platforms
 
 * [Sciebo](https://sciebo.de)
+
+## List of contributors
+
+- Antonia van Eek
+- Clara Rendel
+- Lasse Einfeldt
+- Laura Meierkort
+- Marlena Götza
+- Salman Khalid
+- Shahzeib Tariq Jaswal
+- Nimrod Gavish
+- Matthias Mohr
+- Daniel Nüst
+- Lukas Lohoff
+
+## License
+
+This project is licensed under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

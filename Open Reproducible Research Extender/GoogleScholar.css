@@ -1,0 +1,8 @@
+.ce_filterbox {
+	width: 100%;
+}
+
+
+div[id^='badges-'] {
+	width: 133%;
+}
