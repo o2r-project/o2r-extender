@@ -79,11 +79,17 @@ CLIENT_ID=<secret>
 CLIENT_SECRET=<secret>
 REFRESH_TOKEN=<secret>
 ```
-- upload directory with `webstore upload --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN`
-- publish extension with `webstore publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN`
+- upload directory
+bash```
+webstore upload --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
+```
+- publish extension
+```bash
+webstore publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
+```
 - push the tag to GitHub
 ```bash
-git push upstream master
+git push upstream v0.1.0
 ```
 
 ## List of contributors
