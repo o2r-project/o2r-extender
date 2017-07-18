@@ -13,7 +13,9 @@ In order to use this API, make sure that you have installed [Chrome](https://www
 
 ### Web store installation
 
-*coming soon*
+To install the extension directly from the [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) open the following link and click the "Add to Chrome" button:
+
+[https://chrome.google.com/webstore/detail/open-reproducible-researc/fhhfncpkfohlhphlcgpkbpialfhkmbil](https://chrome.google.com/webstore/detail/open-reproducible-researc/fhhfncpkfohlhphlcgpkbpialfhkmbil)
 
 ### Development installation
 
@@ -54,6 +56,29 @@ Upon successful installation, you will notice the applications' icon in the top-
 #### Supported collaboration platforms
 
 * [Sciebo](https://sciebo.de)
+
+## Development
+
+To release a new version to the [Chrome Web Store](https://chrome.google.com/webstore/category/extensions), we use the [Web Store Upload CLI](https://github.com/DrewML/chrome-webstore-upload-cli).
+
+```bash
+npm install -g chrome-webstore-upload-cli
+```
+
+**Release process**
+
+- [create a new release on GitHub](https://github.com/o2r-project/o2r-extender/releases/new) (make sure version number is increased, see `Opening Reproducible Research Extender/manifest.json`), tag it with the version from `manifest.json` prepended with `v`, e.g. `v0.1.0`
+  - add relevant PRs to the release description
+- download zip file and unzip, go to directory `Opening Reproducible Research Extender`
+- put keys and IDs into environment variables:
+```bash
+EXTENSION_ID=fhhfncpkfohlhphlcgpkbpialfhkmbil
+CLIENT_ID=<secret>
+CLIENT_SECRET=<secret>
+REFRESH_TOKEN=<secret>
+```
+- upload directory with `webstore upload --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN`
+- publish extension with `webstore publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN`
 
 ## List of contributors
 
