@@ -67,16 +67,13 @@ npm install -g chrome-webstore-upload-cli
 
 **Release process**
 
-- [create a new release on GitHub](https://github.com/o2r-project/o2r-extender/releases/new) (make sure version number is increased, see `extension/manifest.json`), tag it with the version from `manifest.json` prepended with `v`, e.g. `v0.1.0`
-  - add relevant PRs to the release description
-- download zip file and unzip, go to directory `extension`
+- add a tag matching the version from `manifest.json` prepended with `v`, e.g. `v0.1.0`
 ```bash
-wget https://github.com/o2r-project/o2r-extender/archive/v0.3.3.zip
-unzip v*.zip
-cd cd o2r-extender-*/extension
+git tag v0.1.0
 ```
-- put keys and IDs into environment variables:
+- go to directory `extension` and put keys and IDs into environment variables:
 ```bash
+cd extension
 EXTENSION_ID=fhhfncpkfohlhphlcgpkbpialfhkmbil
 CLIENT_ID=<secret>
 CLIENT_SECRET=<secret>
@@ -84,6 +81,10 @@ REFRESH_TOKEN=<secret>
 ```
 - upload directory with `webstore upload --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN`
 - publish extension with `webstore publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN`
+- push the tag to GitHub
+```bash
+git push upstream master
+```
 
 ## List of contributors
 
