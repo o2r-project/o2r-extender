@@ -3,7 +3,7 @@
 
 The o2r-extender is part of the [o2r project](http://o2r.info) which aims to make reproduction of research results possbile:
 
-The o2r-extender consists of a Chrome Web Extension that allows for integration of badges on several [research websites](#Supported research services). Additionally, it integrates buttons for the o2r project into [data repositories](#Supported data repositories) and [collaboration platforms](#Supported collaboration platforms).
+The o2r-extender consists of a Chrome Web Extension that allows for integration of badges on several [research websites](#Supported-research-services). Additionally, it integrates buttons for the o2r project into [data repositories](#Supported-data-repositories) and [collaboration platforms](#Supported-collaboration-platforms).
 
 Based on the study project "Badges for computational geoscience containers" available at [geocontainer-badges/reproducability](https://zivgitlab.uni-muenster.de/geocontainer-badges/reproducability).
 
