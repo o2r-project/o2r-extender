@@ -462,7 +462,14 @@ function Article(container, page, id) {
 			}).done(function (data) {
 				var results = 0;
 				for (var i in data.message.items) {
-					var cmpTitle = data.message.items[i].title.toString();
+					var cmpTitle;
+					if (typeof(data.message.items[i].title === 'string')) {
+						cmpTitle = data.message.items[i].title.toString();
+					} else if (typeof(data.message.items[i].title === 'object')) {
+						cmpTitle = data.message.items[i].title[0].toString();
+					} else {
+						throw new Error("Cannot fetch paper title");
+					}
 					if (that.levenshteinDistance(that.title.toLowerCase(), cmpTitle.toLowerCase()) <= 4) {
 						that.doi = data.message.items[i].DOI;
 						results++;
