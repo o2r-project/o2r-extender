@@ -265,10 +265,12 @@ function Badge(type, article) {
 	};
 	
 	this.insertSmallBadge = function() {
+		var manifestData = chrome.runtime.getManifest();
 		var that = this;
 		$.ajax({
 			url:  this.getApiUrl(),
-			dataType: "image/svg+xml"
+			dataType: "image/svg+xml",
+			headers: { 'x-extender-version': manifestData.version }
 		}).always(function(data) {
 			if (typeof data.responseText === 'undefined' || data.responseText.substr(0, 4) !== "<svg") {
 				return;
