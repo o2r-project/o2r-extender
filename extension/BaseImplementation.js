@@ -465,9 +465,9 @@ function Article(container, page, id) {
 				var results = 0;
 				for (var i in data.message.items) {
 					var cmpTitle;
-					if (typeof(data.message.items[i].title === 'string')) {
+					if (typeof data.message.items[i].title === 'string') {
 						cmpTitle = data.message.items[i].title.toString();
-					} else if (typeof(data.message.items[i].title === 'object')) {
+					} else if (typeof data.message.items[i].title === 'object') {
 						cmpTitle = data.message.items[i].title[0].toString();
 					} else {
 						throw new Error("Cannot fetch paper title");
