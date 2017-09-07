@@ -270,7 +270,7 @@ function Badge(type, article) {
 		$.ajax({
 			url:  this.getApiUrl(),
 			dataType: "image/svg+xml",
-			headers: { 'x-extender-version': manifestData.version }
+			headers: { 'x-extender-version': manifestData.version, 'x-research-website': document.location.origin }
 		}).always(function(data) {
 			if (typeof data.responseText === 'undefined' || data.responseText.substr(0, 4) !== "<svg") {
 				return;
