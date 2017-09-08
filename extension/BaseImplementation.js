@@ -1,4 +1,4 @@
-var infoURL = "http://giv-project6.uni-muenster.de";
+var infoURL = "http://o2r.info/badges/";
 var apiURL = "https://o2r.uni-muenster.de/api/1.0/badge/";
 var page = null;
 var sp = null;
