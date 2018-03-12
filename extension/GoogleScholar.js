@@ -34,7 +34,7 @@ function ServiceProvider() {
 	};
 	
 	this.insertFilter = function(page, html) {
-		$('#gs_lnv').prepend(html);
+		$('#gs_bdy_sb').prepend(html);
 	};
 	
 	this.getDoi = function(article) {

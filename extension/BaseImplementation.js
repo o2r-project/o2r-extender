@@ -470,7 +470,7 @@ function Article(container, page, id) {
 					} else if (typeof data.message.items[i].title === 'object') {
 						cmpTitle = data.message.items[i].title[0].toString();
 					} else {
-						throw new Error("Cannot fetch paper title");
+                        console.log("Cannot fetch paper title");
 					}
 					if (that.levenshteinDistance(that.title.toLowerCase(), cmpTitle.toLowerCase()) <= 4) {
 						that.doi = data.message.items[i].DOI;
