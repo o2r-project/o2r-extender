@@ -486,8 +486,7 @@ function Article(container, page, id) {
 				if (typeof perfectHit !== "undefined") {
 					that.doi = perfectHit;
 					that.makeBadges();
-				}
-				if (results === 1) {
+				} else if (results === 1) {
 					that.makeBadges();
 				}
 				else {
