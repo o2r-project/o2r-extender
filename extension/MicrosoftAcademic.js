@@ -13,10 +13,10 @@ function ServiceProvider() {
 	
 	this.getArticleElements = function() {
 		if (ExtendedView) {
-			return $('.full-page-entity');
+			return $('.profile-card');
 		}
 		else {
-			return $('.paper-tile2');
+			return $('.paper');
 		}
 	};
 	
@@ -45,22 +45,30 @@ function ServiceProvider() {
 	};
 	
 	this.getTitle = function(article) {
-		var query = ExtendedView ? '.entity-header' : '.title-bar';
-		var titleElement = article.getContainerElement().find(query).first();
-		return titleElement.text();
+		var titleElement;
+		if (ExtendedView) {
+            titleElement = article.getContainerElement().find('.grey-title span')[0];
+            return titleElement.innerText;
+		} else {
+            titleElement = article.getContainerElement().find('.blue-title').first()[0];
+            return titleElement.innerText;
+		}
+
 	};
 	
 	this.insertBadgeContainer = function(article) {
 		if (ExtendedView) {
-			var html = '<br /><div class="column-header"><h2 class="grey-title">Badges</h2></div><div class="ce_bigbadge_container card column-content entity-section" id="'+ article.getBadgesContainerName() +'"></div>';
-			article.getContainerElement().find('div.column-header').each(function() {
-				if ($(this).text().trim()==='Abstract') {
-					$(this).next().after(html);
-				}
-			});
+            var html = '<br /><div class="column-header"><h2 class="grey-title">Badges</h2></div><div class="ce_bigbadge_container card column-content entity-section" id="'+ article.getBadgesContainerName() +'"></div>';
+            article.getContainerElement().append(html);
+
+			// article.getContainerElement().find('div.column-header').each(function() {
+			// 	if ($(this).text().trim()==='Abstract') {
+			// 		$(this).next().after(html);
+			// 	}
+			// });
 		}
 		else {
-			var elem = article.getContainerElement().find('.paper-meta');
+			var elem = article.getContainerElement().find('.paper-title');
 			$('<div id="'+ article.getBadgesContainerName() +'"></div>').insertAfter(elem);
 		}
 	};
