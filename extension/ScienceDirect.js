@@ -3,7 +3,7 @@ function ServiceProvider() {
 	this.name = "ScienceDirect";
 	this.retry = 0;
 	this.delay = (ExtendedView ? 1000 : 0);
-	this.hasFilterBar = true;
+	this.hasFilterBar = false;
 	
 	this.getArticleElements = function() {
 		if (ExtendedView) {

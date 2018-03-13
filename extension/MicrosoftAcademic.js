@@ -3,7 +3,7 @@ function ServiceProvider() {
 	this.name = "Microsoft Academic";
 	this.retry = 1000;
 	this.delay = 0;
-	this.hasFilterBar = true;
+	this.hasFilterBar = false;
 	
 	// The anchors (#) in the url don't allow proper matching in the manifest.json
 	// Therefore we detect it here manually

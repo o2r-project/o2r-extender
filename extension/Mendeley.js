@@ -3,7 +3,7 @@ function ServiceProvider() {
 	this.name = "Mendeley";
 	this.retry = 0;
 	this.delay = 0;
-	this.hasFilterBar = true;
+	this.hasFilterBar = false;
 	
 	this.getArticleElements = function() {
 		if (ExtendedView) {
