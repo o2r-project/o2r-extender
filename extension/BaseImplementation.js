@@ -463,6 +463,7 @@ function Article(container, page, id) {
 				dataType: "json"
 			}).done(function (data) {
 				var results = 0;
+				var perfectHit;
 				for (var i in data.message.items) {
 					var cmpTitle;
 					if (typeof data.message.items[i].title === 'string') {
@@ -470,15 +471,22 @@ function Article(container, page, id) {
 					} else if (typeof data.message.items[i].title === 'object') {
 						cmpTitle = data.message.items[i].title[0].toString();
 					} else {
-						throw new Error("Cannot fetch paper title");
+                        console.log("Cannot fetch paper title");
 					}
-					if (that.levenshteinDistance(that.title.toLowerCase(), cmpTitle.toLowerCase()) <= 4) {
+					var editDistance = that.levenshteinDistance(that.title.toLowerCase(), cmpTitle.toLowerCase());
+					if (editDistance === 0) {
+						perfectHit = data.message.items[i].DOI;
+					}
+					if (editDistance <= 4) {
 						that.doi = data.message.items[i].DOI;
 						results++;
 					}
 				}
 				 // Only add badges if there is one title matching otherwise we can't decide which is correct
-				if (results === 1) {
+				if (typeof perfectHit !== "undefined") {
+					that.doi = perfectHit;
+					that.makeBadges();
+				} else if (results === 1) {
 					that.makeBadges();
 				}
 				else {

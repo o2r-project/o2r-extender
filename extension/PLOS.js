@@ -10,7 +10,7 @@ function ServiceProvider() {
 			return $('main');
 		}
 		else {
-			return $('.gsc-result');
+			return $('.gs-webResult');
 		}
 	};
 	
@@ -30,7 +30,7 @@ function ServiceProvider() {
 			}
 		}
 		else {
-			var href = article.getContainerElement().find('a.gs-title').attr('href');
+			var href = article.getContainerElement()[0].querySelector("a[target=_blank]").href;
 			if (href) {
 				return this._getParameterFromUrl(href, 'id');
 			}
@@ -39,9 +39,16 @@ function ServiceProvider() {
 	};
 	
 	this.getTitle = function(article) {
-		var query = ExtendedView ? '#artTitle' : 'a.gs-title';
-		var titleElement = article.getContainerElement().find(query);
-		return titleElement.text();
+		if (!ExtendedView) {
+			var query = '.gs-title';
+            var titleElement = article.getContainerElement().find(query)[0];
+            return titleElement.innerText;
+		} else {
+            var query = '#artTitle';
+            var titleElement = article.getContainerElement().find(query);
+            return titleElement.text();
+		}
+
 	};
 	
 	this.insertBadgeContainer = function(article) {
@@ -50,7 +57,9 @@ function ServiceProvider() {
 			article.getContainerElement().find('#artText').prepend(html);
 		}
 		else {
-			article.getContainerElement().find('.gs-per-result-labels').attr('id', article.getBadgesContainerName());
+			//article.getContainerElement().find('.gs-title').attr('id', article.getBadgesContainerName());
+            var elem = article.getContainerElement().find('.gs-title');
+            $('<div id="'+ article.getBadgesContainerName() +'"></div>').insertAfter(elem);
 		}
 	};
 	

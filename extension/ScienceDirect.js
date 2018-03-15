@@ -3,7 +3,7 @@ function ServiceProvider() {
 	this.name = "ScienceDirect";
 	this.retry = 0;
 	this.delay = (ExtendedView ? 1000 : 0);
-	this.hasFilterBar = true;
+	this.hasFilterBar = false;
 	
 	this.getArticleElements = function() {
 		if (ExtendedView) {
@@ -15,21 +15,29 @@ function ServiceProvider() {
 	};
 	
 	this.getFilterHtml = function(page) {
-		var html = '<fieldset><legend class="secTitles">Badge Types</legend><ol>';
-		for(var i = 0; i < BadgeTypes.length; i++) {
-			html += '<li>' + page.getSelectBoxHtml(BadgeTypes[i]) + ' ' + page.getSelectLabelHtml(BadgeTypes[i]) + '</li>';
-		}
-		html += '</ol></fieldset>';
-		html += '<fieldset><legend class="secTitles">Badge Value Filter</legend><ol>';
-		for(var i = 0; i < BadgeTypes.length; i++) {
-			html += '<li class="' + page.getFilterContainerClass(BadgeTypes[i].key) + '">' + page.getFilterLabelHtml(BadgeTypes[i]) + '<br />' + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
-		}
-		html += '</ol></fieldset>';
-		return html;
+        if (!this.hasFilterBar) {
+            // do not add filter
+        } else {
+            var html = '<fieldset><legend class="secTitles">Badge Types</legend><ol>';
+            for(var i = 0; i < BadgeTypes.length; i++) {
+                html += '<li>' + page.getSelectBoxHtml(BadgeTypes[i]) + ' ' + page.getSelectLabelHtml(BadgeTypes[i]) + '</li>';
+            }
+            html += '</ol></fieldset>';
+            html += '<fieldset><legend class="secTitles">Badge Value Filter</legend><ol>';
+            for(var i = 0; i < BadgeTypes.length; i++) {
+                html += '<li class="' + page.getFilterContainerClass(BadgeTypes[i].key) + '">' + page.getFilterLabelHtml(BadgeTypes[i]) + '<br />' + page.getFilterBoxHtml(BadgeTypes[i]) + '</li>';
+            }
+            html += '</ol></fieldset>';
+            return html;
+        }
 	};
 	
 	this.insertFilter = function(page, html) {
-		$('#navBox_pubyear').before(html);
+        if (!this.hasFilterBar) {
+            // do not add filter
+        } else {
+            $('#navBox_pubyear').before(html);
+        }
 	};
 	
 	this.getDoi = function(article) {
