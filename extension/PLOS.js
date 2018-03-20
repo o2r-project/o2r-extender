@@ -25,8 +25,8 @@ function ServiceProvider() {
 	this.getDoi = function(article) {
 		if (ExtendedView) {
 			var href = article.getContainerElement().find('#artDoi a').attr('href');
-			if (href.indexOf('dx.doi.org') > -1) {
-				return href.replace('http://dx.doi.org/', '');
+			if (href.indexOf('doi.org') > -1) {
+				return href.replace('https://doi.org/', '');
 			}
 		}
 		else {

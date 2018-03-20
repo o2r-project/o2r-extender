@@ -2,7 +2,7 @@ function ServiceProvider() {
 	
 	this.name = "DOAJ";
 	this.retry = 1000;
-	this.delay = 0;
+	this.delay = 500;
 	this.hasFilterBar = true;
 	
 	this.getArticleElements = function() {
@@ -39,7 +39,7 @@ function ServiceProvider() {
 		for(var i = 0; i < aElement.length; i++) {
 			var elem = $(aElement[i]);
 			var href = elem.attr('href');
-			if (href.indexOf('dx.doi.org') > -1) {
+			if (href.indexOf('doi.org') > -1) {
 				console.log("Found doi: " + elem.text());
 				return elem.text();
 			}

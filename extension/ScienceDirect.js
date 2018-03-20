@@ -43,8 +43,8 @@ function ServiceProvider() {
 	this.getDoi = function(article) {
 		if (ExtendedView) {
 			var href = article.getContainerElement().find('#ddDoi').attr('href');
-			if (href.indexOf('dx.doi.org') > -1) {
-				var doi = href.replace('http://dx.doi.org/', '');
+			if (href.indexOf('doi.org') > -1) {
+				var doi = href.replace('https://doi.org/', '');
 				console.log("Found doi: " + doi);
 				return doi;
 			}
