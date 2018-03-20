@@ -48,8 +48,13 @@ function ServiceProvider() {
 	};
 	
 	this.getTitle = function(article) {
-		return null;
+        var titleElement = this._getTitleContainer(article);
+        return titleElement.text().replace(/\[[^\]]+\]/g, "");
 	};
+
+    this._getTitleContainer = function(article) {
+        return article.getContainerElement().find('.title');
+    };
 	
 	this.insertBadgeContainer = function(article) {
 		if (ExtendedView) {
