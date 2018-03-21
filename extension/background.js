@@ -16,6 +16,13 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
 	});
  });
 
+chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
+	if (message.reason === 'openTab') {
+        chrome.tabs.create({url: message.url}, function (tab) {
+        });
+	}
+});
+
 //restore "disabled" option
 chrome.storage.sync.get(['enabled'], function (items) {
     if (items.enabled === false ) {

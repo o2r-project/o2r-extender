@@ -40,6 +40,16 @@ chrome.runtime.onMessage.addListener(
 	}
 );
 
+function openPage(type) {
+    // open new tab with selected page
+    var site = 'help/index.html#' + type;
+    let message = {
+    	reason: 'openTab',
+		url: chrome.extension.getURL(site)
+	};
+    chrome.extension.sendMessage(message);
+}
+
 function sendUpdateMessage() {
 	chrome.extension.sendMessage({"message": "update"});
 }
@@ -55,7 +65,7 @@ function Page(settings) {
 			// Some pages like Microsoft Academic load their content by AJAX requests
 			// so on DOM ready the pages are not really ready and we need to wait
 			// until we find actual content.
-			console.log('Badge Integratior: Scheduled retry or delay...');
+			console.log('Badge Integrator: Scheduled retry or delay...');
 			var that = this;
 			window.setTimeout(function() { that.bootstrap(); }, Math.max(sp.retry, sp.delay));
 			sp.delay = 0;
@@ -256,11 +266,15 @@ function Badge(type, article) {
 	};
 	
 	this.getDocUrl = function() {
-		return infoURL + '#' + this.type;
+        var site = 'help/index.html';
+        var url = chrome.extension.getURL(site);
+		return url + '#' + this.type;
+		//return infoURL + '#' + this.type;
 	};
 
 	this.insertContainerElement = function() {
 		var element = $('<span id="'+ this.getContainerName() +'">&nbsp;</span>');
+		element.addClass(this.type);
 		this.article.getBadgeContainer().append(element);
 	};
 	
@@ -276,13 +290,17 @@ function Badge(type, article) {
 				return;
 			}
 
-			var html = '<a href= "' + that.getDocUrl() + '" target="_blank">';
-			html += data.responseText;
+			var html = '<a href= "javascript:void(0);" target="_blank">';
+            html += data.responseText;
 			html += '</a>';
 
 			var container = that.getContainerElement();
 			container.prepend(html);
-			
+			// Open help page on click on badge
+			container[0].addEventListener('click', function(){
+				openPage(container[0].className);
+			});
+
 			that.parseSvg(data.responseText);
 		});
 	};
@@ -545,7 +563,8 @@ function Article(container, page, id) {
 	this.makeBadges = function() {
 		sp.insertBadgeContainer(this);
 		for(var i = 0; i < BadgeTypes.length; i++) {
-			this.badges.push(new Badge(BadgeTypes[i].key, this));
+			var badge = new Badge(BadgeTypes[i].key, this)
+			this.badges.push(badge);
 		}
 	};
 	
