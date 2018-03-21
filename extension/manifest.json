@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Opening Reproducible Research Extender",
 	"short_name": "o2r Extender",
-	"version": "0.3.7",
+	"version": "0.3.8",
 	"permissions": ["webNavigation", "*://*/*", "storage"],
 	"options_page": "options.html",
 	"background": {
