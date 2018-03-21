@@ -313,7 +313,7 @@ function Badge(type, article) {
 				html = '<iframe src="' + this.getApiUrl() + '" scrolling="no" style="width: 99%; height: 200px; overflow: hidden;"></iframe>';
 			}
 			else {
-				html = '<a href= "' + this.getDocUrl() + '" target="_blank">';
+				html = '<a href= "javascript:void(0);" target="_blank">';
 				if (badgeType.extended === true) {
 					html += '<img src="' + this.getApiUrl() + '" style="max-width: 49%; max-height: 200px;" alt="Badge" />';
 				}
@@ -324,7 +324,12 @@ function Badge(type, article) {
 			}
 
 			if (html) {
-				this.getContainerElement().prepend(html);
+                var container = this.getContainerElement();
+                // Open help page on click on badge
+                container[0].addEventListener('click', function(){
+                    openPage(container[0].className);
+                });
+                container.prepend(html);
 			}
 		}
 	};
