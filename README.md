@@ -1,7 +1,6 @@
-# Integrating badges using a Chrome Web Extension
+# Spreading scholarly badges using a Chrome Web Extension
 
-
-The o2r-extender is part of the [o2r project](http://o2r.info) which aims to make reproduction of research results possbile:
+The o2r-extender is part of the [o2r project](https://o2r.info) which aims to make reproduction of research results possbile:
 
 The o2r-extender consists of a Chrome Web Extension that allows for integration of badges on several [research websites](#Supported-research-services). Additionally, it integrates buttons for the o2r project into [data repositories](#Supported-data-repositories) and [collaboration platforms](#Supported-collaboration-platforms).
 
@@ -105,6 +104,14 @@ git push upstream v0.1.0
 - Matthias Mohr
 - Daniel Nüst
 - Lukas Lohoff
+
+## How to cite
+
+If you reference this project in scholarly communication, please use the citations provided on EarthArxiv: https://doi.org/10.31223/osf.io/xtsqh
+
+```
+Nüst, Daniel, Lukas Lohoff, Lasse Einfeldt, Nimrod Gavish, Marlena Götza, Shahzeib T. Jaswal, Salman Khalid, et al. 2019. “Guerrilla Badges for Reproducible Geospatial Data Science (AGILE 2019 Short Paper).” EarthArXiv. June 19. doi:10.31223/osf.io/xtsqh.
+```
 
 ## License
 
